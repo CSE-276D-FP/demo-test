@@ -1,7 +1,7 @@
 from gpiozero import MCP3008
 from time import sleep
 
-fsr_pin = 0  # GPIO pin number where the FSR is connected (e.g., GPIO 17)
+fsr_pin = 17  # GPIO pin number where the FSR is connected (e.g., GPIO 17)
 fsr = MCP3008(channel=fsr_pin)
 
 while True:
