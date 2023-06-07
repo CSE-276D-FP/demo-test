@@ -49,6 +49,7 @@ while running:
             running = False
             break
         elif event.type == pygame.KEYDOWN:
+            print("Keyboard event occured")
             if event.key == K_SPACE:
                 if paused:
                     pygame.mixer.music.unpause()
@@ -61,17 +62,11 @@ while running:
                 pygame.mixer.music.stop()
                 current_audio_index = (current_audio_index + 1) % len(audio_files)
                 play_next_audio()
-            elif event.key == pygame.K_q:
-                print("Keyboard event occured")
-                running = False
-                pygame.display.quit()
-                break
         elif event.type == music_end:
             play_next_audio()
 
 
     clock.tick(30)  # Adjust the playback speed as needed
 
-pygame.display.quit()
 pygame.quit()
 root.destroy()
