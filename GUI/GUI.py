@@ -1,6 +1,8 @@
 from tkinter import *
 import os
-
+import sys
+sys.path.append("../Audio_Scripts")
+from contAudioButton import cont_Audio_Button
 
 class StartScreen:
     def __init__(self, master):
@@ -89,6 +91,16 @@ class Audio:
 
         self.label = Label(self.master, text="Playing Audio...")
         self.label.grid(row=1, column=1)
+        
+        self.playButton = Button(self.master, text="Play", command=pygame.mixer.music.play(), height=7, width=15)
+        self.playButton.grid(row=3, column=40)
+        
+        self.pauseButton = Button(self.master, text="Pause", command=pygame.mixer.music.pause(), height=7, width=15)
+        self.pauseButton.grid(row=3, column=40)
+        
+        self.skipButton = Button(self.master, text="Skip", command=play_next_audio(current_audio_index), height=7, width=15)
+        self.skipButton.grid(row=3, column=40)
+        
         # os.system('python ../Audio_Scripts/continuousAudio.py')
         self.menuButton = Button(self.master, text="Back", command=self.load_menu, height=2, width=8)
         self.menuButton.grid(row=4, column=4)
@@ -136,6 +148,6 @@ class Rec:
         self.another = StartScreen(self.master)
 
 root = Tk()
-root.geometry('600x400')
+root.geometry('1020x600')
 run = StartScreen(root)
 root.mainloop()
