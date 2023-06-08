@@ -1,6 +1,7 @@
 import os
 import sys
 import pygame
+import time
 
 def display_image(image_path):
     image = pygame.image.load(image_path)
@@ -40,22 +41,30 @@ current_index = 0
 image_path = os.path.join(folder_path, image_files[current_index])
 display_image(image_path)
 
+# Set the time interval between image switches (in seconds)
+interval = 3
+
+# Set the initial time for the timer
+timer_start = time.time()
+
 # Main loop
 running = True
 while running:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running = False
-        elif event.type == pygame.KEYDOWN:
-            if event.key == pygame.K_RIGHT:
-                # Increment the index to switch to the next image
-                current_index = (current_index + 1) % len(image_files)
-            elif event.key == pygame.K_LEFT:
-                # Decrement the index to switch to the previous image
-                current_index = (current_index - 1) % len(image_files)
 
-            # Display the new image
-            image_path = os.path.join(folder_path, image_files[current_index])
-            display_image(image_path)
+    # Check if the time interval has passed
+    elapsed_time = time.time() - timer_start
+    if elapsed_time >= interval:
+        # Increment the index to switch to the next image
+        current_index = (current_index + 1) % len(image_files)
+
+        # Display the new image
+        image_path = os.path.join(folder_path, image_files[current_index])
+        display_image(image_path)
+
+        # Reset the timer
+        timer_start = time.time()
 
 pygame.quit()
