@@ -30,6 +30,12 @@ paused = False
 # Button initialization
 playButton = FSR_PlayPause_Button(17)
 playButton.default_mode()
+skipButton = FSR_PlayPause_Button(27)
+skipButton.default_mode()
+recButton = FSR_PlayPause_Button(19)
+recButton.default_mode()
+saveButton = FSR_PlayPause_Button(26)
+saveButton.default_mode()
 
 def play_next_audio():
     global current_audio_index
