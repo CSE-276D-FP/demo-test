@@ -8,13 +8,18 @@ class FSR_PlayPause_Button:
         self.button = Button(pin, pull_up=False)
         self.toggle = False
 
-    def play_pause(self):
-        self.toggle = not self.toggle
+    def set_play(self):
+        # print("play reset")
+        self.toggle = False
 
+    def play_pause(self):
+        # print("Play/Pause")
+        self.toggle = not self.toggle
+        # print(self.toggle)
         if (self.toggle):
-            pygame.mixer.music.unpause()
-        else:
             pygame.mixer.music.pause()
+        else:
+            pygame.mixer.music.unpause()
 
     def default_mode(self):
         self.button.when_pressed = self.play_pause
