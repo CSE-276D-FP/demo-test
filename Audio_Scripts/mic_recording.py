@@ -3,6 +3,7 @@ import soundfile as sf
 import time
 import os
 import numpy as np
+from pygame import mixer
 
 def record_audio(output_file, max_duration):
     # Set audio parameters
@@ -51,11 +52,32 @@ def record_audio(output_file, max_duration):
     sf.write(output_file, audio_data, sample_rate)
 
 
-
 # Specify the folder path and maximum recording duration in seconds
-folder_path = "C:/Users/calvi/OneDrive/Documents/CSE 276/demo-test/sound_example"
+# folder_path = "C:/Users/calvi/OneDrive/Documents/CSE 276/demo-test/sound_example"
+folder_path = os.getcwd()
 output_file = os.path.join(folder_path, "audio.mp3")
 max_duration = 5  # Maximum recording duration in seconds
 
 # Call the recording function
 record_audio(output_file, max_duration)
+
+# Starting the mixer
+mixer.init()
+
+# Loading the song
+# audio_file = "C:/Users/calvi/OneDrive/Documents/CSE 276/demo-test/sound_example/sample2.mp3"
+audio_file = output_file
+mixer.music.load(audio_file)
+
+# Setting the volume
+mixer.music.set_volume(0.7)
+
+# Start playing the song
+mixer.music.play()
+
+# Wait for the audio to finish playing
+while mixer.music.get_busy():
+    pass
+
+# Stop the mixer
+mixer.music.stop()

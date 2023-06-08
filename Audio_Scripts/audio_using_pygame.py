@@ -4,7 +4,8 @@ from pygame import mixer
 mixer.init()
   
 # Loading the song
-audio_file = "C:/Users/calvi/OneDrive/Documents/CSE 276/demo-test/sound_example/sample2.mp3"
+# audio_file = "C:/Users/calvi/OneDrive/Documents/CSE 276/demo-test/sound_example/sample2.mp3"
+audio_file = "/Users/amandaquach/Downloads/CSE 276D/demo-test/sound_example/sample2.mp3"
 mixer.music.load(audio_file)
   
 # Setting the volume
