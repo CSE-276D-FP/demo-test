@@ -1,12 +1,14 @@
-#!/usr/bin/env python
-# coding: utf-8
+#!/usr/israa
 
-# In[3]:
 
 
 import time
 import tkinter as Tkinter
 from tkinter import messagebox
+import pygame
+
+def play_sound():
+    pygame.mixer.music.play()
 
 timer_root = Tk()
 
@@ -92,10 +94,3 @@ btn = Button(timer_root, text='Set Time Countdown', bd='5',
 btn.place(x = 70,y = 120)
 
 timer_root.mainloop()
-
-
-# In[ ]:
-
-
-
-
