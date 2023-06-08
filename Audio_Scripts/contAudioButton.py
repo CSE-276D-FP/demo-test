@@ -11,7 +11,7 @@ from FSR_PlayPause import FSR_PlayPause_Button
 from FSR_Skip import FSR_Skip_Button
 from FSR_Rec import FSR_Rec_Button
 
-class contAudioButton:
+class cont_Audio_Button:
     root = Tk()
     root.withdraw()
 
@@ -31,6 +31,7 @@ class contAudioButton:
     paused = False
 
     def play_next_audio(current_audio_index):
+        global audio_files, folder_path
         if current_audio_index < len(audio_files):
             audio_file = audio_files[current_audio_index]
             audio_path = os.path.join(folder_path, audio_file)
@@ -49,6 +50,7 @@ class contAudioButton:
 
     recButton = FSR_Rec_Button(19)
     def rec_mode():
+        global recButton, playButton, skipButton, saveButton
         print("Recording")
         recButton.trigger_rec_mode1()
 
