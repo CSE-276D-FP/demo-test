@@ -1,24 +1,25 @@
 from gpiozero import Button
 
 class FSR_Button:
-    def __init__(self, pin, on_fcn, off_fcn):
-        self.on_fcn = on_fcn
-        self.off_fcn = off_fcn
-
+    def __init__(self, pin):
         self.button = Button(pin, pull_up=False)
+        self.toggle = False
 
-    def activate(self):
+    def activate(self, on_fcn, off_fcn):
         if self.button.is_pressed:
-            self.on_fcn()
+            self.toggle = not self.toggle
+
+        if self.toggle:
+            on_fcn()
         else:
-            self.off_fcn()
+            off_fcn()
 
 
 def print_ON():
-    print("Button is pressed")
+    print("Button is on Play mode")
 
 def print_OFF():
-    print("Button is NOT pressed")
+    print("Button is Pause mode")
 
 if __name__ == "__main__":
     button = FSR_Button(17, print_ON, print_OFF)

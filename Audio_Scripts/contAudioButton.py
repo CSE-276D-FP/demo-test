@@ -5,6 +5,10 @@ from pygame.locals import *
 from tkinter import *
 from tkinter import filedialog
 
+from signal import pause
+sys.path.append("../FSR_button")
+from FSR_PlayPause import FSR_PlayPause_Button
+
 root = Tk()
 root.withdraw()
 
@@ -22,6 +26,10 @@ clock = pygame.time.Clock()
 
 current_audio_index = 0
 paused = False
+
+# Button initialization
+playButton = FSR_PlayPause_Button(17)
+playButton.default_mode()
 
 def play_next_audio():
     global current_audio_index
@@ -49,24 +57,24 @@ while running:
             running = False
             break
         elif event.type == pygame.KEYDOWN:
-            print("Keyboard event occured")
-            if event.key == K_SPACE:
-                if paused:
-                    pygame.mixer.music.unpause()
-                    paused = False
-                else:
-                    pygame.mixer.music.pause()
-                    paused = True
+            # print("Keyboard event occured")
+            # if event.key == K_SPACE:
+            #     if paused:
+            #         pygame.mixer.music.unpause()
+            #         paused = False
+            #     else:
+            #         pygame.mixer.music.pause()
+            #         paused = True
 
-            elif event.key == K_RIGHT:
+            if event.key == K_RIGHT: # skip
                 pygame.mixer.music.stop()
                 current_audio_index = (current_audio_index + 1) % len(audio_files)
                 play_next_audio()
         elif event.type == music_end:
             play_next_audio()
 
-
     clock.tick(30)  # Adjust the playback speed as needed
 
+pause()
 pygame.quit()
 root.destroy()
