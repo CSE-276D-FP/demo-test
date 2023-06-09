@@ -227,20 +227,32 @@ class Cam:
         # keep `root` in `self.master`
         self.master = master
 
-        self.label = Label(self.master, text="Photo Time!")
+        self.label = Label(self.master, text="Do you want to take a photo or a timelapse Video?")
         self.label.grid(row=1, column=1)
         
-        os.system('python ../camera/capture_with_button.py')
+        self.photoButton = Button(self.master, text="Photo", command=self.load_photo, height=7, width=15)
+        self.photoButton.grid(row=3, column=1)
+        
+        self.tlButton = Button(self.master, text="Timelapse Video", command=self.load_tl, height=7, width=15)
+        self.tlButton.grid(row=6, column=1)
         
         self.menuButton = Button(self.master, text="Back", command=self.load_menu, height=2, width=8)
         self.menuButton.grid(row=4, column=4)
         
     def load_menu(self):
+        self.photoButton.destroy()
+        self.tlButton.destroy()
         self.menuButton.destroy()
         self.label.destroy()
         
         # use `root` with another class
         self.another = StartScreen(self.master)
+        
+    def load_photo(self):
+        os.system('python ../camera/capture_with_button.py')
+        
+    def load_tl(self):
+        os.system('python ../camera/timelapse_with_buttons.py')
         
 class Clock:
     def __init__(self, master):
