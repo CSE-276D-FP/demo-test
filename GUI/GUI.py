@@ -44,15 +44,13 @@ class StartScreen:
         self.another = Audio(self.master)
         
     def load_video(self):
-        self.audioButton.destroy()
-        self.videoButton.destroy()
-        self.photoButton.destroy()
-        self.recButton.destroy()
-        self.clockButton.destroy()
-        self.instButton.destroy()
-
-        # use `root` with another class
-        self.another = Video(self.master)
+        # self.audioButton.destroy()
+        # self.videoButton.destroy()
+        # self.photoButton.destroy()
+        # self.recButton.destroy()
+        # self.clockButton.destroy()
+        # self.instButton.destroy()
+        os.system('python ../Video_Scripts/play_video.py')
         
     def load_photo(self):
         os.system('python ../Image_Scripts/display_image.py')
@@ -215,14 +213,20 @@ class Mic:
 
         # keep `root` in `self.master`
         self.master = master
-
-        self.label = Label(self.master, text="Do you want to start recording?")
-        self.label.grid(row=1, column=1)
         
-        self.menuButton = Button(self.master, text="Menu", command=self.load_menu, height=2, width=8)
-        self.menuButton.grid(row=4, column=4)
+        custom_font = font.Font(size=40)
+        self.label = Label(self.master, text="Do you want to start recording?", font=custom_font)
+        self.label.place(x=250, y=20)
+        
+        custom_font = font.Font(size=60)
+        self.yesButton = Button(self.master, text="Yes", command=self.record, height=2, width=8, font=custom_font)
+        self.yesButton.place(x=125, y=200)
+        
+        self.menuButton = Button(self.master, text="Menu", command=self.load_menu, height=2, width=8, font=custom_font)
+        self.menuButton.place(x=600, y=200)
         
     def load_menu(self):
+        self.yesButton.destroy()
         self.label.destroy()
         self.menuButton.destroy()
         
@@ -241,7 +245,6 @@ class Cam:
         custom_font = font.Font(size=40)
         self.label = Label(self.master, text="Do you want to take a photo or a timelapse Video?", font=custom_font)
         self.label.place(x=100, y=20)
-        
         
         custom_font = font.Font(size=60)
         self.photoButton = Button(self.master, text="Photo", command=self.load_photo, height=2, width=8, font=custom_font)
