@@ -1,8 +1,13 @@
 import cv2
 import time
 import os
+import pygame
+from moviepy.editor import *
+
+video_name= ''
 
 def capture_photo():
+    global video_name
     camera = cv2.VideoCapture(1)  # Use index 0 for the first USB camera
     if not camera.isOpened():
         print("Failed to open the camera")
@@ -26,7 +31,7 @@ def capture_photo():
         
     # Generate a unique filename
     index = len(os.listdir(folder_name)) + 1
-    video_name = os.path.join(folder_name, f"timelapse_video{index}.mp4")
+    video_name = os.path.join(folder_name, fr"timelapse_video{index}.mp4")
 
     # Create a video writer
     fps = 1 / interval  # Frames per second (1 frame per interval)
@@ -59,5 +64,14 @@ def capture_photo():
 
     print("Time-lapse captured and saved as", video_name)
 
+
 # Call the capture_photo function to create a time-lapse video
 capture_photo()
+
+
+pygame.display.set_caption('Yee')
+
+clip = VideoFileClip(video_name.replace("\\","/"))
+clip.preview()
+
+pygame.quit()
