@@ -52,7 +52,7 @@ class CameraCapture:
 
     def capture_photo(self, camera, frame):
         # Create the folder if it doesn't exist
-        folder_name = "image_example"
+        folder_name = "../image_example"
         if not os.path.exists(folder_name):
             os.makedirs(folder_name)
 
