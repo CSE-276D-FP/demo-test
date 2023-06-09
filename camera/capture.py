@@ -16,7 +16,7 @@ class CameraCapture:
         print(arr)
 
     def start_camera_preview(self):
-        camera = cv2.VideoCapture(0)  # Use index 0 for the first USB camera
+        camera = cv2.VideoCapture(1)  # Use index 0 for the first USB camera
         if not camera.isOpened():
             print("Failed to open the camera")
             return
@@ -72,7 +72,7 @@ class CameraCapture:
 capture = CameraCapture()
 
 # Call the start_camera_preview method to start the camera preview
-# capture.start_camera_preview()
+capture.start_camera_preview()
 
 # Call the find method to find camera indexes
-capture.find()
+#capture.find()
