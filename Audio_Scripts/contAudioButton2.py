@@ -10,6 +10,7 @@ sys.path.append("../FSR_button")
 from FSR_PlayPause import FSR_PlayPause_Button
 from FSR_Skip import FSR_Skip_Button
 from FSR_Rec import FSR_Rec_Button
+from FSR_Save import FSR_Save_Button
 
 root = Tk()
 root.withdraw()
@@ -47,29 +48,15 @@ playButton.default_mode()
 skipButton = FSR_Skip_Button(27, play_next_audio, current_audio_index, len(audio_files))
 skipButton.default_mode()
 
-recButton = FSR_Rec_Button(19)
-def rec_mode():
-    global recButton, playButton, skipButton, saveButton
-    print("Recording")
-    recButton.trigger_rec_mode1()
-
-    # Wait for next input button
-    cancel = playButton.cancel_rec() or skipButton.cancel_rec() or saveButton.cancel_rec()
-    while (not cancel and not recButton.end_rec()):
-        cancel = playButton.cancel_rec() or skipButton.cancel_rec() or saveButton.cancel_rec()
-
-    if (cancel):
-        print("Recording canceled")
-    else:
-        print("Record here")
-
-recButton.default_mode(rec_mode)
-
-saveButton = FSR_PlayPause_Button(26)
+saveButton = FSR_Save_Button(26)
 saveButton.default_mode()
+
+recButton = FSR_Rec_Button(19, [playButton, skipButton, saveButton])
+recButton.default_mode()
 
 play_next_audio(current_audio_index)
 playButton.play_pause()
+
 
 display = pygame.display.set_mode((300, 300))
 # Set the music end event
@@ -93,4 +80,5 @@ while running:
 pause()
 pygame.quit()
 root.destroy()
+sys.exit()
 

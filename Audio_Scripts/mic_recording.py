@@ -53,9 +53,11 @@ os.remove(output_wav)
 print("Press 's' to keep the recording or any other key to delete it.")
 keyboard_input = keyboard.read_key()
 
+'''
 # Check if the user pressed 's' or any other key
 if keyboard_input.lower() == 's':
     print("Keeping the recording.")
 else:
     print("Deleting the recording.")
     delete_recording()
+'''
