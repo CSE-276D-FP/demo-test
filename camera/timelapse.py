@@ -8,7 +8,7 @@ video_name= ''
 
 def capture_photo():
     global video_name
-    camera = cv2.VideoCapture(1)  # Use index 0 for the first USB camera
+    camera = cv2.VideoCapture(0)  # Use index 0 for the first USB camera
     if not camera.isOpened():
         print("Failed to open the camera")
         return
