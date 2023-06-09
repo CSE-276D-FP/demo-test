@@ -1,8 +1,9 @@
 from tkinter import *
+from tkinter import font
 import os
-import sys
-sys.path.append("../camera")
-from capture import CameraCapture
+# import sys
+# sys.path.append("../camera")
+# from capture import CameraCapture
 # from contAudioButton import cont_Audio_Button
 
 class StartScreen:
@@ -10,71 +11,90 @@ class StartScreen:
 
         # keep `root` in `self.master`
         self.master = master 
+        custom_font = font.Font(size=55)
+        self.label = Label(self.master, text="Menu", font=custom_font)
+        self.label.place(x=450, y=20)
         
-        self.audioButton = Button(self.master, text="Audio", command=self.load_audio, height=7, width=15)
-        self.audioButton.grid(row=1, column=1)
+        custom_font = font.Font(size=70)
+        self.audioButton = Button(self.master, text="Audio", command=self.load_audio, height=2, width=5, font=custom_font)
+        self.audioButton.place(x=50, y=100)
 
-        self.videoButton = Button(self.master, text="Video", command=self.load_video, height=7, width=15)
-        self.videoButton.grid(row=1, column=40)
+        self.videoButton = Button(self.master, text="Video", command=self.load_video, height=2, width=5, font=custom_font)
+        self.videoButton.place(x=400, y=100)
         
-        self.photoButton = Button(self.master, text="Photo", command=self.load_photo, height=7, width=15)
-        self.photoButton.grid(row=2, column=10)
+        self.photoButton = Button(self.master, text="Photo", command=self.load_photo, height=2, width=5, font=custom_font)
+        self.photoButton.place(x=750, y=100)
         
-        self.recButton = Button(self.master, text="Recording", command=self.load_rec, height=7, width=15)
-        self.recButton.grid(row=3, column=1)
+        self.clockButton = Button(self.master, text="Clock", command=self.load_clock, height=2, width=5, font=custom_font)
+        self.clockButton.place(x=50, y=350)
         
-        self.clockButton = Button(self.master, text="Clock", command=self.load_clock, height=7, width=15)
-        self.clockButton.grid(row=3, column=40)
+        self.recButton = Button(self.master, text="Record", command=self.load_rec, height=2, width=5, font=custom_font)
+        self.recButton.place(x=400, y=350)
+        
+        inst_custom_font = font.Font(size=47)
+        self.instButton = Button(self.master, text="How To\n Use", command=self.load_inst, height=3, width=7, font=inst_custom_font)
+        self.instButton.place(x=750, y=350)
 
     def load_audio(self):
+        self.label.destroy()
         self.audioButton.destroy()
         self.videoButton.destroy()
         self.photoButton.destroy()
         self.recButton.destroy()
         self.clockButton.destroy()
+        self.instButton.destroy()
 
         # use `root` with another class
         self.another = Audio(self.master)
         
     def load_video(self):
-        self.audioButton.destroy()
-        self.videoButton.destroy()
-        self.photoButton.destroy()
-        self.recButton.destroy()
-        self.clockButton.destroy()
-
-        # use `root` with another class
-        self.another = Video(self.master)
+        # self.audioButton.destroy()
+        # self.videoButton.destroy()
+        # self.photoButton.destroy()
+        # self.recButton.destroy()
+        # self.clockButton.destroy()
+        # self.instButton.destroy()
+        os.system('python ../Video_Scripts/play_video.py')
         
     def load_photo(self):
-        self.audioButton.destroy()
-        self.videoButton.destroy()
-        self.photoButton.destroy()
-        self.recButton.destroy()
-        self.clockButton.destroy()
-
-        # use `root` with another class
-        self.another = Photo(self.master)
+        os.system('python ../Image_Scripts/display_image.py')
         
     def load_rec(self):
+        self.label.destroy()
         self.audioButton.destroy()
         self.videoButton.destroy()
         self.photoButton.destroy()
         self.recButton.destroy()
         self.clockButton.destroy()
+        self.instButton.destroy()
 
         # use `root` with another class
         self.another = Rec(self.master)
         
     def load_clock(self):
+        self.label.destroy()
         self.audioButton.destroy()
         self.videoButton.destroy()
         self.photoButton.destroy()
         self.recButton.destroy()
         self.clockButton.destroy()
+        self.instButton.destroy()
 
         # use `root` with another class
         self.another = Clock(self.master)
+        
+    def load_inst(self):
+        self.label.destroy()
+        self.audioButton.destroy()
+        self.videoButton.destroy()
+        self.photoButton.destroy()
+        self.recButton.destroy()
+        self.clockButton.destroy()
+        self.instButton.destroy()
+
+        # use `root` with another class
+        self.another = Instruction(self.master)
+
 
 class Video:
     def __init__(self, master):
@@ -85,10 +105,11 @@ class Video:
         self.label = Label(self.master, text="Playing Timelapse...")
         self.label.grid(row=1, column=1)
         
-        self.menuButton = Button(self.master, text="Back", command=self.load_menu, height=2, width=8)
+        self.menuButton = Button(self.master, text="Menu", command=self.load_menu, height=2, width=8)
         self.menuButton.grid(row=4, column=4)
         
     def load_menu(self):
+        self.label.destroy()
         self.menuButton.destroy()
         
         # use `root` with another class
@@ -100,7 +121,7 @@ class Audio:
         # keep `root` in `self.master`
         self.master = master
 
-        self.label = Label(self.master, text="Playing Audio...")
+        self.label = Label(self.master, text="Play/Pause/Skip Audio Messages on Bear")
         self.label.grid(row=1, column=1)
         
         # self.playButton = Button(self.master, text="Play", command=pygame.mixer.music.play(), height=7, width=15)
@@ -112,103 +133,115 @@ class Audio:
         # self.skipButton = Button(self.master, text="Skip", command=play_next_audio(current_audio_index), height=7, width=15)
         # self.skipButton.grid(row=3, column=40)
         
-        os.system('python ../Audio_Scripts/contAudioButton2.py')
+        # os.system('python ../Audio_Scripts/contAudioButton2.py')
         
-        self.menuButton = Button(self.master, text="Back", command=self.load_menu, height=2, width=8)
+        self.menuButton = Button(self.master, text="Menu", command=self.load_menu, height=2, width=8)
         self.menuButton.grid(row=4, column=4)
         
     def load_menu(self):
+        self.label.destroy()
         self.menuButton.destroy()
         
         # use `root` with another class
         self.another = StartScreen(self.master)
         
-class Photo:
-    def __init__(self, master):
+# class Photo:
+#     def __init__(self, master):
 
-        # keep `root` in `self.master`
-        self.master = master
+#         # keep `root` in `self.master`
+#         self.master = master
 
-        self.label = Label(self.master, text="Displaying Photo...")
-        self.label.grid(row=1, column=1)
+#         self.label = Label(self.master, text="")
+#         self.label.grid(row=1, column=1)
         
-        os.system('python ../Image_Scripts/display_image.py')
+#         os.system('python ../Image_Scripts/display_image.py')
 
-        self.menuButton = Button(self.master, text="Back", command=self.load_menu, height=2, width=8)
-        self.menuButton.grid(row=4, column=4)
+#         self.menuButton = Button(self.master, text="Back", command=self.load_menu, height=2, width=8)
+#         self.menuButton.grid(row=4, column=4)
         
-    def load_menu(self):
-        self.menuButton.destroy()
+#     def load_menu(self):
+#         self.label.destroy()
+#         self.menuButton.destroy()
         
-        # use `root` with another class
-        self.another = StartScreen(self.master)
+#         # use `root` with another class
+#         self.another = StartScreen(self.master)
 
 class Rec:
     def __init__(self, master):
 
         # keep `root` in `self.master`
         self.master = master
-
-        self.label = Label(self.master, text="Choose Microphone of Camera")
-        self.label.grid(row=1, column=1)
         
-        # self.micButton = Button(self.master, text="Microphone", command=self.load_mic, height=7, width=15)
-        # self.micButton.grid(row=3, column=1)
         
-        self.camButton = Button(self.master, text="Camera", command=self.load_cam, height=7, width=15)
-        self.camButton.grid(row=3, column=1)
+        custom_font = font.Font(size=40)
+        self.label = Label(self.master, text="Choose Microphone or Camera", font=custom_font)
+        self.label.place(x=250, y=20)
+        
+        custom_font = font.Font(size=60)
+        self.micButton = Button(self.master, text="Microphone", command=self.load_mic, height=2, width=8, font=custom_font)
+        self.micButton.place(x=125, y=200)
+        
+        self.camButton = Button(self.master, text="Camera", command=self.load_cam, height=2, width=8, font=custom_font)
+        self.camButton.place(x=600, y=200)
         
         # os.system('python ../Audio_Scripts/mic_recording.py')
-        self.menuButton = Button(self.master, text="Back", command=self.load_menu, height=2, width=8)
-        self.menuButton.grid(row=4, column=4)
+        self.menuButton = Button(self.master, text="Menu", command=self.load_menu, height=2, width=8, font=custom_font)
+        self.menuButton.place(x=350, y=400)
         
     def load_menu(self):
+        self.label.destroy()
+        self.camButton.destroy()
+        self.micButton.destroy()
+        self.menuButton.destroy()
+        
+        # use `root` with another class
+        self.another = StartScreen(self.master)
+        
+    def load_mic(self):
+        self.label.destroy()
+        self.camButton.destroy()
+        self.micButton.destroy()
+        self.menuButton.destroy()
+
+        # use `root` with another class
+        self.another = Mic(self.master)
+        
+    def load_cam(self):
+        self.label.destroy()
+        self.camButton.destroy()
+        self.micButton.destroy()
+        self.menuButton.destroy()
+
+        # use `root` with another class
+        self.another = Cam(self.master)
+        
+class Mic:
+    def __init__(self, master):
+
+        # keep `root` in `self.master`
+        self.master = master
+        
+        custom_font = font.Font(size=40)
+        self.label = Label(self.master, text="Do you want to start recording?", font=custom_font)
+        self.label.place(x=250, y=20)
+        
+        custom_font = font.Font(size=60)
+        self.yesButton = Button(self.master, text="Yes", command=self.record, height=2, width=8, font=custom_font)
+        self.yesButton.place(x=125, y=200)
+        
+        self.menuButton = Button(self.master, text="Menu", command=self.load_menu, height=2, width=8, font=custom_font)
+        self.menuButton.place(x=600, y=200)
+        
+    def load_menu(self):
+        self.yesButton.destroy()
         self.label.destroy()
         self.menuButton.destroy()
         
         # use `root` with another class
         self.another = StartScreen(self.master)
         
-    # def load_mic(self):
-    #     self.camButton.destroy()
-    #     self.micButton.destroy()
-
-    #     # use `root` with another class
-    #     self.another = Mic(self.master)
-        
-    def load_cam(self):
-        self.label.destroy()
-        self.camButton.destroy()
-        self.menuButton.destroy()
-        # self.micButton.destroy()
-
-        # use `root` with another class
-        self.another = Cam(self.master)
-        
-# class Mic:
-#     def __init__(self, master):
-
-#         # keep `root` in `self.master`
-#         self.master = master
-
-#         self.label = Label(self.master, text="Microphone ...")
-#         self.label.grid(row=1, column=1)
-        
-#         self.micButton = Button(self.master, text="Start", command=self.load_rec, height=7, width=15)
-#         self.micButton.grid(row=3, column=1)
-        
-#         self.camButton = Button(self.master, text="Stop", command=self.load_rec, height=7, width=15)
-#         self.camButton.grid(row=3, column=1)
-        
-#         # os.system('python ../Audio_Scripts/mic_recording.py')
-#         self.menuButton = Button(self.master, text="Back", command=self.load_menu, height=2, width=8)
-#         self.menuButton.grid(row=4, column=4)
-        
-#     def load_menu(self):
-#         self.menuButton.destroy()
-        
-#         # use `root` with another class
-#         self.another = StartScreen(self.master)
+    def record(self):
+        os.system('python ../Audio_Scripts/mic_recording.py')
 
 class Cam:
     def __init__(self, master):
@@ -216,29 +249,34 @@ class Cam:
         # keep `root` in `self.master`
         self.master = master
 
-        self.label = Label(self.master, text="Camera ...")
-        self.label.grid(row=1, column=1)
+        custom_font = font.Font(size=40)
+        self.label = Label(self.master, text="Do you want to take a photo or a timelapse Video?", font=custom_font)
+        self.label.place(x=100, y=20)
         
-        capture = CameraCapture()
-        capture.start_camera_preview()
+        custom_font = font.Font(size=60)
+        self.photoButton = Button(self.master, text="Photo", command=self.load_photo, height=2, width=8, font=custom_font)
+        self.photoButton.place(x=125, y=200)
         
-        self.micButton = Button(self.master, text="Capture Photo", command=capture.capture_photo, height=7, width=15)
-        self.micButton.grid(row=3, column=1)
+        self.tlButton = Button(self.master, text="Timelapse\n Video", command=self.load_tl, height=2, width=8, font=custom_font)
+        self.tlButton.place(x=600, y=200)
         
-        # self.camButton = Button(self.master, text="Exit", command=self.load_rec, height=7, width=15)
-        # self.camButton.grid(row=3, column=1)
-        
-        # os.system('python ../camera/capture.py')
-        
-        self.menuButton = Button(self.master, text="Back", command=self.load_menu, height=2, width=8)
-        self.menuButton.grid(row=4, column=4)
+        self.menuButton = Button(self.master, text="Menu", command=self.load_menu, height=2, width=8, font=custom_font)
+        self.menuButton.place(x=350, y=400)
         
     def load_menu(self):
+        self.photoButton.destroy()
+        self.tlButton.destroy()
         self.menuButton.destroy()
         self.label.destroy()
         
         # use `root` with another class
         self.another = StartScreen(self.master)
+        
+    def load_photo(self):
+        os.system('python ../camera/capture_with_button.py')
+        
+    def load_tl(self):
+        os.system('python ../camera/timelapse_with_buttons.py')
         
 class Clock:
     def __init__(self, master):
@@ -249,12 +287,32 @@ class Clock:
         self.label = Label(self.master, text="Starting clock...")
         self.label.grid(row=1, column=1)
         
-        os.system('python ../Alarm/Alarm_Reminder.py')
+        # os.system('python ../Alarm/Alarm_Reminder.py')
         
         self.menuButton = Button(self.master, text="Back", command=self.load_menu, height=2, width=8)
         self.menuButton.grid(row=4, column=4)
         
     def load_menu(self):
+        self.label.destroy()
+        self.menuButton.destroy()
+        
+        # use `root` with another class
+        self.another = StartScreen(self.master)
+        
+class Instruction:
+    def __init__(self, master):
+
+        # keep `root` in `self.master`
+        self.master = master
+
+        self.label = Label(self.master, text="Welcome to the  Instructions Page!")
+        self.label.grid(row=1, column=1)
+        
+        self.menuButton = Button(self.master, text="Back", command=self.load_menu, height=2, width=8)
+        self.menuButton.grid(row=4, column=4)
+        
+    def load_menu(self):
+        self.label.destroy()
         self.menuButton.destroy()
         
         # use `root` with another class
@@ -262,5 +320,6 @@ class Clock:
 
 root = Tk()
 root.geometry('1020x600')
+root.configure(bg='grey')
 run = StartScreen(root)
 root.mainloop()
