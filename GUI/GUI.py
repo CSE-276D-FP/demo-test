@@ -11,28 +11,32 @@ class StartScreen:
 
         # keep `root` in `self.master`
         self.master = master 
-        custom_font = font.Font(size=70)
+        custom_font = font.Font(size=55)
+        self.label = Label(self.master, text="Menu", font=custom_font)
+        self.label.place(x=450, y=20)
         
+        custom_font = font.Font(size=70)
         self.audioButton = Button(self.master, text="Audio", command=self.load_audio, height=2, width=5, font=custom_font)
-        self.audioButton.place(x=50, y=50)
+        self.audioButton.place(x=50, y=100)
 
         self.videoButton = Button(self.master, text="Video", command=self.load_video, height=2, width=5, font=custom_font)
-        self.videoButton.place(x=400, y=50)
+        self.videoButton.place(x=400, y=100)
         
         self.photoButton = Button(self.master, text="Photo", command=self.load_photo, height=2, width=5, font=custom_font)
-        self.photoButton.place(x=750, y=50)
+        self.photoButton.place(x=750, y=100)
         
         self.clockButton = Button(self.master, text="Clock", command=self.load_clock, height=2, width=5, font=custom_font)
-        self.clockButton.place(x=50, y=300)
+        self.clockButton.place(x=50, y=350)
         
         self.recButton = Button(self.master, text="Record", command=self.load_rec, height=2, width=5, font=custom_font)
-        self.recButton.place(x=400, y=300)
+        self.recButton.place(x=400, y=350)
         
         inst_custom_font = font.Font(size=47)
         self.instButton = Button(self.master, text="How To\n Use", command=self.load_inst, height=3, width=7, font=inst_custom_font)
-        self.instButton.place(x=750, y=300)
+        self.instButton.place(x=750, y=350)
 
     def load_audio(self):
+        self.label.destroy()
         self.audioButton.destroy()
         self.videoButton.destroy()
         self.photoButton.destroy()
@@ -56,6 +60,7 @@ class StartScreen:
         os.system('python ../Image_Scripts/display_image.py')
         
     def load_rec(self):
+        self.label.destroy()
         self.audioButton.destroy()
         self.videoButton.destroy()
         self.photoButton.destroy()
@@ -67,6 +72,7 @@ class StartScreen:
         self.another = Rec(self.master)
         
     def load_clock(self):
+        self.label.destroy()
         self.audioButton.destroy()
         self.videoButton.destroy()
         self.photoButton.destroy()
@@ -78,6 +84,7 @@ class StartScreen:
         self.another = Clock(self.master)
         
     def load_inst(self):
+        self.label.destroy()
         self.audioButton.destroy()
         self.videoButton.destroy()
         self.photoButton.destroy()
