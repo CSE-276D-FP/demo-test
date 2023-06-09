@@ -2,7 +2,7 @@ from tkinter import *
 import os
 import sys
 sys.path.append("../camera")
-from capture import CameraCapture
+# from capture import CameraCapture
 # from contAudioButton import cont_Audio_Button
 
 class StartScreen:
@@ -112,12 +112,13 @@ class Audio:
         # self.skipButton = Button(self.master, text="Skip", command=play_next_audio(current_audio_index), height=7, width=15)
         # self.skipButton.grid(row=3, column=40)
         
-        os.system('python ../Audio_Scripts/contAudioButton2.py')
+        # os.system('python ../Audio_Scripts/contAudioButton2.py')
         
         self.menuButton = Button(self.master, text="Back", command=self.load_menu, height=2, width=8)
         self.menuButton.grid(row=4, column=4)
         
     def load_menu(self):
+        self.label.destroy()
         self.menuButton.destroy()
         
         # use `root` with another class
@@ -138,6 +139,7 @@ class Photo:
         self.menuButton.grid(row=4, column=4)
         
     def load_menu(self):
+        self.label.destroy()
         self.menuButton.destroy()
         
         # use `root` with another class
@@ -195,26 +197,29 @@ class Mic:
         # keep `root` in `self.master`
         self.master = master
 
-        self.label = Label(self.master, text="Microphone ...")
+        self.label = Label(self.master, text="Do you want to start recording?")
         self.label.grid(row=1, column=1)
         
-        # self.micButton = Button(self.master, text="Start", command=self.load_rec, height=7, width=15)
-        # self.micButton.grid(row=3, column=1)
+        self.yesButton = Button(self.master, text="Yes", command=self.record, height=7, width=15)
+        self.yesButton.grid(row=3, column=1)
         
-        # self.camButton = Button(self.master, text="Stop", command=self.load_rec, height=7, width=15)
-        # self.camButton.grid(row=3, column=1)
-        
-        os.system('python ../Audio_Scripts/mic_recording.py')
+        self.noButton = Button(self.master, text="No", command=self.record, height=7, width=15)
+        self.noButton.grid(row=6, column=1)
         
         self.menuButton = Button(self.master, text="Back", command=self.load_menu, height=2, width=8)
         self.menuButton.grid(row=4, column=4)
         
     def load_menu(self):
+        self.yesButton.destroy()
+        self.noButton.destroy()
         self.label.destroy()
         self.menuButton.destroy()
         
         # use `root` with another class
         self.another = StartScreen(self.master)
+        
+    def record(self):
+        os.system('python ../Audio_Scripts/mic_recording.py')
 
 class Cam:
     def __init__(self, master):
@@ -222,19 +227,10 @@ class Cam:
         # keep `root` in `self.master`
         self.master = master
 
-        self.label = Label(self.master, text="Camera ...")
+        self.label = Label(self.master, text="Photo Time!")
         self.label.grid(row=1, column=1)
         
-        capture = CameraCapture()
-        capture.start_camera_preview()
-        
-        self.camButton = Button(self.master, text="Capture Photo", command=capture.take_photo, height=7, width=15)
-        self.camButton.grid(row=3, column=1)
-        
-        # self.camButton = Button(self.master, text="Exit", command=self.load_rec, height=7, width=15)
-        # self.camButton.grid(row=3, column=1)
-        
-        # os.system('python ../camera/capture.py')
+        os.system('python ../camera/capture_with_button.py')
         
         self.menuButton = Button(self.master, text="Back", command=self.load_menu, height=2, width=8)
         self.menuButton.grid(row=4, column=4)
@@ -242,7 +238,6 @@ class Cam:
     def load_menu(self):
         self.menuButton.destroy()
         self.label.destroy()
-        self.camButton.destroy()
         
         # use `root` with another class
         self.another = StartScreen(self.master)
@@ -256,12 +251,13 @@ class Clock:
         self.label = Label(self.master, text="Starting clock...")
         self.label.grid(row=1, column=1)
         
-        os.system('python ../Alarm/Alarm_Reminder.py')
+        # os.system('python ../Alarm/Alarm_Reminder.py')
         
         self.menuButton = Button(self.master, text="Back", command=self.load_menu, height=2, width=8)
         self.menuButton.grid(row=4, column=4)
         
     def load_menu(self):
+        self.label.destroy()
         self.menuButton.destroy()
         
         # use `root` with another class
