@@ -3,6 +3,7 @@ import tkinter as tk
 from PIL import ImageTk, Image
 import threading
 import sys
+import os
 
 class CameraPreview:
     def __init__(self, window):
@@ -62,9 +63,18 @@ class CameraPreview:
         # Capture a frame from the camera
         ret, frame = self.cap.read()
 
+        # Create the folder if it doesn't exist
+        folder_name = "../image_example"
+        if not os.path.exists(folder_name):
+            os.makedirs(folder_name)
+
+        # Generate a unique filename
+        index = len(os.listdir(folder_name)) + 1
+        filename = os.path.join(folder_name, f"photo{index}.jpg")
+        
         # If the frame is captured successfully, save it to an image file
         if ret:
-            cv2.imwrite("captured_image.jpg", frame)
+            cv2.imwrite(filename, frame)
             print("Image captured successfully!")
 
     def exit_program(self):
@@ -72,6 +82,19 @@ class CameraPreview:
         self.cap.release()
         self.window.destroy()
         sys.exit()
+    
+    def find(self):
+        index = 0
+        arr = []
+        while True:
+            cap = cv2.VideoCapture(index)
+            if not cap.read()[0]:
+                break
+            else:
+                arr.append(index)
+            cap.release()
+            index += 1
+        print(arr)
 
 def main():
     # Create a tkinter window
