@@ -1,7 +1,3 @@
-#!/usr/israa
-
-
-
 import time
 import tkinter as Tkinter
 from tkinter import messagebox

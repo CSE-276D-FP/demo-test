@@ -1,9 +1,3 @@
-#!/usr/bin/env python
-# coding: utf-8
-
-# In[9]:
-
-
 import tkinter as tk
 from tkinter import messagebox
 from tkinter import font
@@ -12,10 +6,6 @@ from PySide2 import QtCore, QtGui, QtWidgets, QtSvg, QtXml
 import tkinter as Tkinter
 import datetime
 import time
-
-
-# In[10]:
-
 
 counter = datetime.timedelta()
 running = False
@@ -84,10 +74,3 @@ start.pack(side="left")
 stop.pack(side="left")
 reset.pack(side="left")
 root.mainloop()
-
-
-# In[ ]:
-
-
-
-

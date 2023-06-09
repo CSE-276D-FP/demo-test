@@ -1,5 +1,6 @@
 {
     "python.analysis.extraPaths": [
-        "./Audio_Scripts"
+        "./Audio_Scripts",
+        "./camera"
     ]
 }
