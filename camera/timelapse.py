@@ -3,7 +3,7 @@ import time
 import os
 
 def capture_photo():
-    camera = cv2.VideoCapture(0)  # Use index 0 for the first USB camera
+    camera = cv2.VideoCapture(1)  # Use index 0 for the first USB camera
     if not camera.isOpened():
         print("Failed to open the camera")
         return
@@ -14,7 +14,7 @@ def capture_photo():
 
     # Define the time-lapse duration and interval between photos
     duration = 5  # Time-lapse duration in seconds
-    interval = 1   # Interval between photos in seconds
+    interval = 0.15   # Interval between photos in seconds
 
     # Calculate the number of photos to capture
     num_photos = int(duration / interval)
