@@ -89,7 +89,7 @@ def submit():
 # button widget
 custom_font = font.Font(size=45)
 btn = Tkinter.Button(timer_root, text='Set Time Countdown', bd='5',command=submit, font=custom_font)
-btn.place(x = 220,y = 250)
+btn.place(x = 200,y = 250)
 
 custom_font = font.Font(size=45)
 btn = Tkinter.Button(timer_root, text='Exit', bd='5',command=exit_program, font=custom_font)
