@@ -14,9 +14,10 @@ def record_audio(output_wav, output_mp3, max_duration):
 
     # Record audio
     print("Recording Started")
-    audio_data = sd.rec(int(duration * sample_rate), samplerate=sample_rate, channels=1, blocking=True)
+    audio_data = sd.rec(int(duration * sample_rate), samplerate=sample_rate, channels=1)
+    sd.wait()
 
-    print("Recording stopped")
+    print("Recording timed out")
 
     # Create the folder if it doesn't exist
     folder_path = os.path.dirname(output_wav)
@@ -26,14 +27,28 @@ def record_audio(output_wav, output_mp3, max_duration):
     # Save the recorded audio as a WAV file
     sf.write(output_wav, audio_data, sample_rate)
 
+def save_audio(output_wav):
     # Convert WAV to MP3
     wav_audio = AudioSegment.from_wav(output_wav)
+    wav_audio.export(output_mp3, format="mp3")
+    os.remove(output_wav)
+
+# stackoverflow.com/questions/10840533/most-pythonic-way-to-delete-a-file-which-may-not-exist
+def delete_audio(output_wav):
+    try:
+        os.remove(output_wav + ".wav")
+    except OSError:
+        pass
+
+def gen_filename():
+    return "local_recording" + str(int(time.time()))
 
 class FSR_Rec_Button:
     def __init__(self, pin, otherButtons):
         self.button = Button(pin, pull_up=False)
         self.toggle = False
         self.otherButtons = otherButtons
+        self.recentRecording = None
 
         for b in otherButtons:
             b.add_rec_btn(self)
@@ -44,7 +59,7 @@ class FSR_Rec_Button:
     def trigger_rec_mode(self):
         print("Record")
         pygame.mixer.music.pause()
-        # os.system("cvlc --play-and-exit ../tts/pre_recording_prompt.mp3")
+        os.system("cvlc --play-and-exit ../tts/pre_recording_prompt.mp3")
 
         self.button.when_pressed = self.start_recording
 
@@ -58,21 +73,36 @@ class FSR_Rec_Button:
     
     def start_recording(self):
         print("Start recording")
-        '''
+        
         folder_path = os.getcwd()
-        output_wav = os.path.join(folder_path, "audio.wav")
-        output_mp3 = os.path.join(folder_path, "audio.mp3")
-        max_duration = 10
+        self.recentRecording = gen_filename()
+        output_wav = os.path.join(folder_path, self.recentRecording + ".wav")
+        output_mp3 = os.path.join(folder_path, self.recentRecording + ".mp3")
+        max_duration = 5
 
         record_audio(output_wav, output_mp3, max_duration)
 
-        '''
+        
         self.button.when_pressed = self.end_recording
         
 
     def end_recording(self):
-        print("Stop recording")
-        self.set_all_default()
+        print("Stop recording - list options for different save/delete/record")
+        sd.stop()
+        
+
+        self.button.when_pressed = self.replay_rec_mode
+
+        '''
+        for b in self.otherButtons:
+            b.post_rec_mode(self, self.recentRecording)
+        '''
+
+    def replay_rec_mode(self):
+        print("Re-recording")
+        delete_audio(self.recentRecording)
+        self.trigger_rec_mode()
+        # self.set_all_default()
 
     def replay_rec(self):
         raise("Not implemented yet")

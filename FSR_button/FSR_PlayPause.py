@@ -27,8 +27,6 @@ class FSR_PlayPause_Button(FSR_Abs_Button):
         super().cancel_rec_mode(recButton)
 
     def replay_rec(self):
-        raise("Not implemented yet")
-        return
-    
-    def rec_mode(self):
+        os.system("cvl 
+    def post_rec_mode(self, filename):
         self.button.when_pressed = self.replay_rec
