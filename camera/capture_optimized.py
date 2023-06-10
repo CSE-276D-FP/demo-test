@@ -2,6 +2,7 @@ import cv2
 import time
 import os
 import tkinter as tk
+from tkinter import font
 from PIL import ImageTk, Image
 from threading import Thread
 
@@ -85,11 +86,12 @@ button_frame = tk.Frame(window)
 button_frame.pack(side=tk.BOTTOM, pady=10)
 
 # Create a capture button
-capture_button = tk.Button(button_frame, text="Capture", command=lambda: start_capture(camera))
+custom_font = font.Font(size=20)
+capture_button = tk.Button(button_frame, text="Capture", command=lambda: start_capture(camera), font=custom_font, width = 5, height = 2)
 capture_button.pack(side=tk.LEFT, padx=10)
 
 # Create an exit button
-exit_button = tk.Button(button_frame, text="Exit", command=exit_program)
+exit_button = tk.Button(button_frame, text="Exit", command=exit_program, font=custom_font, width = 5, height = 2)
 exit_button.pack(side=tk.LEFT, padx=10)
 
 # Start the Tkinter event loop
