@@ -77,8 +77,8 @@ max_duration = 5  # Maximum recording duration in seconds
 pygame.init()
 
 # Set the screen size to 1020x600
-screen_width = 1020
-screen_height = 600
+screen_width = 1024
+screen_height = 530
 screen = pygame.display.set_mode((screen_width, screen_height))
 pygame.display.set_caption("Mic Recording")
 
@@ -86,19 +86,19 @@ pygame.display.set_caption("Mic Recording")
 font = pygame.font.Font(None, 24)
 
 # Button settings
-button_width = 120
-button_height = 40
+button_width = 300
+button_height = 100
 button_color = (150, 150, 150)
 button_text_color = (255, 255, 255)
-button_font = pygame.font.Font(None, 24)
+button_font = pygame.font.Font(None, 85)
 
 # Calculate the total width for both buttons
 total_button_width = button_width * 2 + 10  # Add spacing between buttons
 
 # Quit button
-quit_text = "Quit"
+quit_text = "Exit"
 quit_text_render = button_font.render(quit_text, True, button_text_color)
-quit_text_rect = quit_text_render.get_rect(center=(screen_width // 2 + total_button_width // 2 - button_width // 2, screen_height - button_height - 10))
+quit_text_rect = quit_text_render.get_rect(center=(700, 250))
 quit_button_rect = pygame.Rect(0, 0, button_width, button_height)
 quit_button_rect.center = quit_text_rect.center
 
@@ -109,7 +109,7 @@ while running:
      # Record button
     recording_text = "Recorded" if is_recording else "Record"
     recording_text_render = button_font.render(recording_text, True, button_text_color)
-    recording_text_rect = recording_text_render.get_rect(center=(screen_width // 2 - total_button_width // 2 + button_width // 2, screen_height - button_height - 10))
+    recording_text_rect = recording_text_render.get_rect(center=(320, 250))
     recording_button_rect = pygame.Rect(0, 0, button_width, button_height)
     recording_button_rect.center = recording_text_rect.center
 
@@ -123,7 +123,7 @@ while running:
             elif quit_button_rect.collidepoint(event.pos):
                 quit_window()
 
-    screen.fill((255, 255, 255))
+    screen.fill((200, 200, 200))
 
     # # Draw the buttons
     # pygame.draw.rect(screen, (0, 255, 0), recording_button_rect)
@@ -132,7 +132,7 @@ while running:
     # Check for button clicks
     if is_button_clicked(recording_button_rect):
         recording_text ="Recording"
-        pygame.draw.rect(screen,(0, 255, 0), recording_button_rect)
+        pygame.draw.rect(screen, button_color, recording_button_rect)
         screen.blit(recording_text_render, recording_text_rect)
         record_audio(output_wav, output_mp3, max_duration)
         playback(output_wav)
@@ -142,10 +142,10 @@ while running:
         quit_window()
 
     # Draw the button
-    pygame.draw.rect(screen,(0, 255, 0), recording_button_rect)
+    pygame.draw.rect(screen, button_color, recording_button_rect)
     screen.blit(recording_text_render, recording_text_rect)
 
-    pygame.draw.rect(screen, (255, 0, 0), quit_button_rect)
+    pygame.draw.rect(screen, button_color, quit_button_rect)
     screen.blit(quit_text_render, quit_text_rect)
     
     pygame.display.flip()

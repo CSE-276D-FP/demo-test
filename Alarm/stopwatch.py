@@ -58,18 +58,26 @@ def Reset(label):
     else:
         label['text'] = 'Starting...'
 
+def exit_program():
+    root.destroy()
+    
 root = Tkinter.Tk()
 root.title("Stopwatch")
 
 # Fixing the window size.
 root.geometry('1024x530')
-label = Tkinter.Label(root, text="Use stopwatch!", fg="black", font="ROMAN 25 bold", height=10, width=20)
+label = Tkinter.Label(root, text="Use stopwatch!", fg="black", font="ROMAN 50 bold", height=2, width=20)
 label.pack()
 f = Tkinter.Frame(root)
 custom_font = font.Font(size=45)
 start = Tkinter.Button(f, text='Start', height=2, width=5, command=lambda:Start(label), font=custom_font)
 stop = Tkinter.Button(f, text='Stop',  height=2, width=5, state='disabled', command=Stop, font=custom_font)
 reset = Tkinter.Button(f, text='Reset', height=2, width=5, state='disabled', command=lambda:Reset(label), font=custom_font)
+
+custom_font = font.Font(size=45)
+btn = Tkinter.Button(root, text='Exit', bd='5',command=exit_program, font=custom_font)
+btn.place(x = 450, y = 350)
+
 f.pack(anchor='center', pady=5)
 start.pack(side="left")
 stop.pack(side="left")
