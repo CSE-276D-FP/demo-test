@@ -90,7 +90,7 @@ button_width = 180
 button_height = 60
 button_color = (150, 150, 150)
 button_text_color = (255, 255, 255)
-button_font = pygame.font.Font(None, 40)
+button_font = pygame.font.Font(None, 60)
 
 # Calculate the total width for both buttons
 total_button_width = button_width * 2 + 10  # Add spacing between buttons
@@ -98,7 +98,7 @@ total_button_width = button_width * 2 + 10  # Add spacing between buttons
 # Quit button
 quit_text = "Exit"
 quit_text_render = button_font.render(quit_text, True, button_text_color)
-quit_text_rect = quit_text_render.get_rect(center=(500, 200))
+quit_text_rect = quit_text_render.get_rect(center=(800, 300))
 quit_button_rect = pygame.Rect(0, 0, button_width, button_height)
 quit_button_rect.center = quit_text_rect.center
 
@@ -109,7 +109,7 @@ while running:
      # Record button
     recording_text = "Recorded" if is_recording else "Record"
     recording_text_render = button_font.render(recording_text, True, button_text_color)
-    recording_text_rect = recording_text_render.get_rect(center=(screen_width // 2 - total_button_width // 2 + button_width // 2, screen_height - button_height - 10))
+    recording_text_rect = recording_text_render.get_rect(center=(200, 300))
     recording_button_rect = pygame.Rect(0, 0, button_width, button_height)
     recording_button_rect.center = recording_text_rect.center
 
