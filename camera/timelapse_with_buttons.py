@@ -5,12 +5,10 @@ import tkinter as tk
 from PIL import ImageTk, Image
 from threading import Thread
 
-camera = cv2.VideoCapture(0)  # Use index 0 for the first USB camera
-
 class CameraPreview:
-    def __init__(self, window):
+    def __init__(self, window, camera):
         self.window = window
-        self.camera = cv2.VideoCapture(0)  # Use index 0 for the first USB camera
+        self.camera = camera
         if not self.camera.isOpened():
             print("Failed to open the camera")
             return
@@ -36,12 +34,7 @@ class CameraPreview:
     def close(self):
         self.camera.release()
 
-def capture_photo():
-    # camera = cv2.VideoCapture(0)  # Use index 0 for the first USB camera
-    if not camera.isOpened():
-        print("Failed to open the camera")
-        return
-
+def capture_photo(camera):
     # Set camera resolution (optional)
     camera.set(cv2.CAP_PROP_FRAME_WIDTH, 1280)
     camera.set(cv2.CAP_PROP_FRAME_HEIGHT, 720)
@@ -81,21 +74,17 @@ def capture_photo():
         # Wait for the specified interval
         time.sleep(interval)
 
-    # Release the camera
-    # camera.release()
-
     # Release the video writer
     video_writer.release()
 
     print("Time-lapse captured and saved as", video_name)
 
-
-def start_capture():
+def start_capture(camera):
     capture_button.config(state=tk.DISABLED)  # Disable the capture button during capture
     exit_button.config(state=tk.DISABLED)  # Disable the exit button during capture
 
     # Start a new thread for capturing the time-lapse video
-    capture_thread = Thread(target=capture_photo)
+    capture_thread = Thread(target=capture_photo, args=(camera,))
     capture_thread.start()
 
     def enable_buttons():
@@ -112,15 +101,18 @@ def exit_program():
 window = tk.Tk()
 window.title("Time-Lapse Capture")
 
+# Create a camera instance
+camera = cv2.VideoCapture(0)  # Use index 0 for the first USB camera
+
 # Create a camera preview object
-camera_preview = CameraPreview(window)
+camera_preview = CameraPreview(window, camera)
 
 # Create a frame to hold the buttons
 button_frame = tk.Frame(window)
 button_frame.pack(side=tk.BOTTOM, pady=10)
 
 # Create a capture button
-capture_button = tk.Button(button_frame, text="Start Capture", command=start_capture)
+capture_button = tk.Button(button_frame, text="Start Capture", command=lambda: start_capture(camera))
 capture_button.pack(side=tk.LEFT, padx=10)
 
 # Create an exit button
