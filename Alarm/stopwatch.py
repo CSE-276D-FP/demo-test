@@ -76,7 +76,7 @@ reset = Tkinter.Button(f, text='Reset', height=2, width=5, state='disabled', com
 
 custom_font = font.Font(size=45)
 btn = Tkinter.Button(root, text='Exit', bd='5',command=exit_program, font=custom_font)
-btn.place(x = 455, y = 330)
+btn.place(x = 455, y = 350)
 
 f.pack(anchor='center', pady=5)
 start.pack(side="left")
