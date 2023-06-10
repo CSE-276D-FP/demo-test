@@ -108,10 +108,10 @@ while running:
     display_image(image_path)
     
     # Display the title
-    title_text = "Image Slideshow"
-    title_render = font.render(title_text, True, (255, 255, 255))
-    title_rect = title_render.get_rect(center=(screen_width // 2, 20))
-    screen.blit(title_render, title_rect)
+    # title_text = ""
+    # title_render = font.render(title_text, True, (255, 255, 255))
+    # title_rect = title_render.get_rect(center=(screen_width // 2, 20))
+    # screen.blit(title_render, title_rect)
 
     # Draw the button
     pygame.draw.rect(screen, button_color, play_pause_button_rect)
