@@ -73,6 +73,8 @@ class FSR_Rec_Button:
         self.recentRecording = gen_filename()
         
         print("Start recording file", self.recentRecording)
+        os.system("cvlc --play-and-exit ../tts/recording_started_prompt.mp3")
+
         output_wav = os.path.join(folder_path, self.recentRecording + ".wav")
         output_mp3 = os.path.join(folder_path, self.recentRecording + ".mp3")
         max_duration = 5
@@ -85,7 +87,10 @@ class FSR_Rec_Button:
 
     def end_recording(self):
         print("Stop recording - list options for different save/delete/record")
-        sd.stop()
+        os.system("cvlc --play-and-exit ../tts/recording_stopped_prompt.mp3")
+        os.system("cvlc --play-and-exit ../tts/post_recording_prompt.mp3")
+
+        # sd.stop()
         
         self.button.when_pressed = self.replay_rec_mode
 

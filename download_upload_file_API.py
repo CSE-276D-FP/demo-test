@@ -1,9 +1,3 @@
-#!/usr/bin/env python
-# coding: utf-8
-
-# In[ ]:
-
-
 import os
 import pickle
 from googleapiclient.discovery import build
@@ -27,7 +21,7 @@ def access_google_drive():
             creds.refresh(Request())
         else:
             flow = InstalledAppFlow.from_client_secrets_file(
-                '/Users/asra/Desktop/client_secret_CSE276D.json', SCOPES)
+                'client_secret_CSE276D.json', SCOPES)
             creds = flow.run_local_server(port=0)
         # Save the credentials for the next run
         with open('token.pickle', 'wb') as token:

@@ -15,6 +15,7 @@ class FSR_Save_Button(FSR_Abs_Button):
     
     def save_rec(self):
         print("Saving recording")
+        os.system("cvlc --play-and-exit ../tts/post_recording_save.mp3")
 
         if self.filename is None:
             raise RuntimeError("Make sure you call post_rec_mode")
