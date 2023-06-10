@@ -3,30 +3,26 @@ import os
 import subprocess
 
 def is_USB_plugged_in():
-    result = subprocess.run(['lsblk', '-o', 'name,label,type,mountpoint'], capture_output=True, text=True)
+    result = subprocess.run(['ls', '/media/*/'], capture_output=True, text=True)
     output = result.stdout
 
-    lines = output.split('\n')
-    usb_drives = []
+    media_devices = []
 
-    for line in output.split('\n'):
-        if line.startswith('/media'):
-            usb_drives.append(line)
+    if output:
+        media_devices = output.split('\n')[:-1]  # Remove the last empty element
 
-    return usb_drives
+    return media_devices
 
+# Get the media devices
+media_devices = is_USB_plugged_in()
 
-# Get the USB drive with media files
-media_usb_drives = is_USB_plugged_in()
-print(media_usb_drives)
-if len(media_usb_drives) > 0:
-    # Assume the first media USB drive found is the desired source
-    usb_source = media_usb_drives[0]
-    print(usb_source)
+if len(media_devices) > 0:
+    # Assume the first media device found is the desired source
+    usb_source = media_devices[0]
+    print(f"USB source: {usb_source}")
 else:
-    print("No media USB drive found.")
-    exit()
-
+    print("No media devices found.")
+    
 # usb_source = "/media/hahui/NEW VOLUME"
 # Destination path
 mp3_destination = "./sound_example"
