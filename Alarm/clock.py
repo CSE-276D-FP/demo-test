@@ -26,10 +26,10 @@ def open_alarm():
     pass
 
 def open_stopwatch():
-    pass
+    os.system('Alarm/stopwatch.py')
 
 def open_timer():
-    pass
+    os.system('Alarm/timer.py')
 # the main window
 window = tk.Tk()
 window.title("Alarm Clock")
