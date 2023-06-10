@@ -46,7 +46,7 @@ if len(image_files) == 0:
 current_index = 0
 
 # Set the time interval between image switches (in seconds)
-interval = 3
+interval = 2
 
 # Set the initial time for the timer
 timer_start = time.time()
@@ -68,7 +68,7 @@ button_font = pygame.font.Font(None, 24)
 total_button_width = button_width * 2 + 10  # Add spacing between buttons
 
 # Quit button
-quit_text = "Quit"
+quit_text = "Exit"
 quit_text_render = button_font.render(quit_text, True, button_text_color)
 quit_text_rect = quit_text_render.get_rect(center=(screen_width // 2 + total_button_width // 2 - button_width // 2, screen_height - button_height - 10))
 quit_button_rect = pygame.Rect(0, 0, button_width, button_height)
