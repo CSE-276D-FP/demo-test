@@ -58,8 +58,8 @@ is_playing = True
 font = pygame.font.Font(None, 24)
 
 # Button settings
-button_width = 120
-button_height = 40
+button_width = 180
+button_height = 60
 button_color = (150, 150, 150)
 button_text_color = (255, 255, 255)
 button_font = pygame.font.Font(None, 24)
