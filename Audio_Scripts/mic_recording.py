@@ -86,7 +86,7 @@ pygame.display.set_caption("Mic Recording")
 font = pygame.font.Font(None, 24)
 
 # Button settings
-button_width = 280
+button_width = 300
 button_height = 100
 button_color = (150, 150, 150)
 button_text_color = (255, 255, 255)
@@ -109,7 +109,7 @@ while running:
      # Record button
     recording_text = "Recorded" if is_recording else "Record"
     recording_text_render = button_font.render(recording_text, True, button_text_color)
-    recording_text_rect = recording_text_render.get_rect(center=(300, 250))
+    recording_text_rect = recording_text_render.get_rect(center=(320, 250))
     recording_button_rect = pygame.Rect(0, 0, button_width, button_height)
     recording_button_rect.center = recording_text_rect.center
 
