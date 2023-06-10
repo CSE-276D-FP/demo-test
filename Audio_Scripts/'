@@ -5,6 +5,7 @@ import os
 
 import sounddevice as sd
 import soundfile as sf
+from pydub import AudioSegment
 
 def record_audio(output_wav, output_mp3, max_duration):
     # Set audio parameters
@@ -13,8 +14,7 @@ def record_audio(output_wav, output_mp3, max_duration):
 
     # Record audio
     print("Recording Started")
-    audio_data = sd.rec(int(duration * sample_rate), samplerate=sample_rate, channels=1)
-    sd.wait()
+    audio_data = sd.rec(int(duration * sample_rate), samplerate=sample_rate, channels=1, blocking=True)
 
     print("Recording timed out")
 
@@ -25,8 +25,12 @@ def record_audio(output_wav, output_mp3, max_duration):
 
     # Save the recorded audio as a WAV file
     sf.write(output_wav, audio_data, sample_rate)
-    time.sleep(2)
-    print(".wav file written")
+
+def save_audio(output_wav):
+    # Convert WAV to MP3
+    wav_audio = AudioSegment.from_wav(output_wav)
+    wav_audio.export(output_mp3, format="mp3")
+    os.remove(output_wav)
 
 # stackoverflow.com/questions/10840533/most-pythonic-way-to-delete-a-file-which-may-not-exist
 def delete_audio(output_wav):
@@ -36,9 +40,7 @@ def delete_audio(output_wav):
         pass
 
 def gen_filename():
-    # create descending filename IDs for newer files to make them appear
-    # at the top of the playlist
-    return str(100000000000 - int(time.time())) + "local_recording"
+    return "local_recording" + str(int(time.time()))
 
 class FSR_Rec_Button:
     def __init__(self, pin, otherButtons):
@@ -56,12 +58,12 @@ class FSR_Rec_Button:
     def trigger_rec_mode(self):
         print("Record")
         pygame.mixer.music.pause()
-        os.system("cvlc --play-and-exit ../tts/pre_recording_prompt.mp3")
+        # os.system("cvlc --play-and-exit ../tts/pre_recording_prompt.mp3")
 
         self.button.when_pressed = self.start_recording
 
         for b in self.otherButtons:
-            b.cancel_rec_mode()
+            b.cancel_rec_mode(self)
 
     def set_all_default(self):
         for b in self.otherButtons:
@@ -69,13 +71,13 @@ class FSR_Rec_Button:
         self.default_mode()
     
     def start_recording(self):
+        print("Start recording")
+        
         folder_path = os.getcwd()
         self.recentRecording = gen_filename()
-        
-        print("Start recording file", self.recentRecording)
         output_wav = os.path.join(folder_path, self.recentRecording + ".wav")
         output_mp3 = os.path.join(folder_path, self.recentRecording + ".mp3")
-        max_duration = 5
+        max_duration = 10
 
         record_audio(output_wav, output_mp3, max_duration)
 
@@ -87,17 +89,25 @@ class FSR_Rec_Button:
         print("Stop recording - list options for different save/delete/record")
         sd.stop()
         
+
         self.button.when_pressed = self.replay_rec_mode
 
+        '''
         for b in self.otherButtons:
-            b.post_rec_mode(self.recentRecording)
-        
+            b.post_rec_mode(self, self.recentRecording)
+        '''
 
     def replay_rec_mode(self):
         print("Re-recording")
         delete_audio(self.recentRecording)
-        self.trigger_rec_mode()
+        trigger_rec_mode()
         # self.set_all_default()
 
+    def replay_rec(self):
+        raise("Not implemented yet")
+        return
+    
+    def rec_mode(self):
+        self.button.when_pressed = self.replay_rec
 
 
