@@ -243,17 +243,16 @@ class Mic:
         # keep `root` in `self.master`
         self.master = master
         
-        custom_font = font.Font(size=40)
+        custom_font = font.Font(size=30)
         self.label = Label(self.master, text="Do you want to start recording?", font=custom_font)
-        self.label.place(x=250, y=20)
+        self.label.place(x=200, y=20)
         
-        custom_font = font.Font(size=60)
-        self.yesButton = Button(self.master, text="Yes", command=self.record, height=2, width=8, font=custom_font)
-        self.yesButton.place(x=125, y=200)
+        custom_font = font.Font(size=45)
+        self.yesButton = Button(self.master, text="Yes", command=self.record, height=2, width=9, font=custom_font)
+        self.yesButton.place(x=105, y=150)
         
-        self.menuButton = Button(self.master, text="Menu", command=self.load_menu, height=2, width=8, font=custom_font)
-        self.menuButton.place(x=600, y=200)
-        
+        self.menuButton = Button(self.master, text="Menu", command=self.load_menu, height=2, width=9, font=custom_font)
+        self.menuButton.place(x=580, y=150)
         
     def load_menu(self):
         self.yesButton.destroy()
@@ -308,20 +307,43 @@ class Clock:
         # keep `root` in `self.master`
         self.master = master
 
-        self.label = Label(self.master, text="Starting clock...")
-        self.label.grid(row=1, column=1)
+        custom_font = font.Font(size=25)
+        self.label = Label(self.master, text="Choose which function you would like to use", font=custom_font)
+        self.label.place(x=110, y=20)
         
-        # os.system('python ../Alarm/Alarm_Reminder.py')
-        
-        self.menuButton = Button(self.master, text="Menu", command=self.load_menu, height=2, width=8)
-        self.menuButton.grid(row=4, column=4)
+        # buttons for alarm, stopwatch, and timer with icons
+        custom_font = font.Font(size=45)
+        self.alarm_button = Button(self.master, text="Alarm", command=self.open_alarm, height=2, width=9, font=custom_font)
+        self.alarm_button.place(x=105, y=150)
+
+        self.stopwatch_button = Button(self.master, text="Stopwatch", command=self.open_stopwatch, height=2, width=9, font=custom_font)
+        self.stopwatch_button.place(x=580, y=150)
+
+        self.timer_button = Button(self.master, text="Timer", command=self.open_timer, height=2, width=9, font=custom_font)
+        self.timer_button.place(x=105, y=330)
+
+        self.menuButton = Button(self.master, text="Menu", command=self.load_menu, height=2, width=9, font=custom_font)
+        self.menuButton.place(x=580, y=330)
         
     def load_menu(self):
+        self.alarm_button.destroy()
+        self.stopwatch_button.destroy()
+        self.timer_button.destroy()
         self.label.destroy()
         self.menuButton.destroy()
         
         # use `root` with another class
         self.another = StartScreen(self.master)
+        
+    def open_alarm(self):
+    # Implement the alarm function later
+        pass    
+
+    def open_stopwatch(self):
+        os.system('python ../Alarm/stopwatch.py')
+
+    def open_timer(self):
+        os.system('python ../Alarm/timer.py')
         
 class Instruction:
     def __init__(self, master):
