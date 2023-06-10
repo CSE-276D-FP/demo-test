@@ -1,6 +1,7 @@
 from gpiozero import Button
 import time
 import pygame
+import os
 from FSR_Abs import FSR_Abs_Button
 from FSR_Rec import delete_audio
 
@@ -35,6 +36,8 @@ class FSR_Skip_Button(FSR_Abs_Button):
 
     def no_save_rec(self):
         print("Exiting record mode")
+        os.system("cvlc --play-and-exit ../tts/post_recording_no_save.mp3")
+
         if self.filename is None:
             raise RuntimeError("Make sure you call post_rec_mode")
         delete_audio(self.filename + ".wav")
