@@ -3,13 +3,17 @@ import os
 import subprocess
 
 def is_USB_plugged_in():
-    result = subprocess.run(['ls', '/media/*/'], capture_output=True, text=True)
+    result = subprocess.run(['mount'], capture_output=True, text=True)
     output = result.stdout
-    print(output)
+
     media_devices = []
 
     if output:
-        media_devices = output.split('\n')[:-1]  # Remove the last empty element
+        lines = output.split('\n')
+        for line in lines:
+            if '/media/' in line:
+                device = line.split(' ')[0]
+                media_devices.append(device)
 
     return media_devices
 
