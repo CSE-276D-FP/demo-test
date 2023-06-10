@@ -27,7 +27,7 @@ else:
     print("No media USB drive found.")
     exit()
 
-
+usb_source = "media/hahui/NEW VOLUME"
 # Destination path
 mp3_destination = "/demo-test/sound_example"
 
