@@ -32,7 +32,7 @@ pygame.init()
 
 # Set the screen size to 1020x600
 screen_width = 1020
-screen_height = 600
+screen_height = 530
 screen = pygame.display.set_mode((screen_width, screen_height))
 pygame.display.set_caption("")
 
@@ -46,7 +46,7 @@ if len(image_files) == 0:
 current_index = 0
 
 # Set the time interval between image switches (in seconds)
-interval = 1
+interval = 3
 
 # Set the initial time for the timer
 timer_start = time.time()
@@ -108,10 +108,10 @@ while running:
     display_image(image_path)
     
     # Display the title
-    title_text = "Image Slideshow"
-    title_render = font.render(title_text, True, (255, 255, 255))
-    title_rect = title_render.get_rect(center=(screen_width // 2, 20))
-    screen.blit(title_render, title_rect)
+    # title_text = ""
+    # title_render = font.render(title_text, True, (255, 255, 255))
+    # title_rect = title_render.get_rect(center=(screen_width // 2, 20))
+    # screen.blit(title_render, title_rect)
 
     # Draw the button
     pygame.draw.rect(screen, button_color, play_pause_button_rect)
