@@ -2,33 +2,33 @@ import shutil
 import os
 import subprocess
 
-def is_USB_plugged_in():
-    result = subprocess.run(['mount'], capture_output=True, text=True)
-    output = result.stdout
+# def is_USB_plugged_in():
+#     result = subprocess.run(['mount'], capture_output=True, text=True)
+#     output = result.stdout
 
-    media_devices = []
+#     media_devices = []
 
-    if output:
-        lines = output.split('\n')
-        for line in lines:
-            if '/media/' in line:
-                device = line.split(' ')[0]
-                media_devices.append(device)
+#     if output:
+#         lines = output.split('\n')
+#         for line in lines:
+#             if '/media/' in line:
+#                 device = line.split(' ')[0]
+#                 media_devices.append(device)
 
-    return media_devices
+#     return media_devices
 
-# Get the media devices
-media_devices = is_USB_plugged_in()
+# # Get the media devices
+# media_devices = is_USB_plugged_in()
 
-if len(media_devices) > 0:
-    # Assume the first media device found is the desired source
-    usb_source = media_devices[0]
-    print(f"USB source: {usb_source}")
-else:
-    print("No media devices found.")
-    exit()
+# if len(media_devices) > 0:
+#     # Assume the first media device found is the desired source
+#     usb_source = media_devices[0]
+#     print(f"USB source: {usb_source}")
+# else:
+#     print("No media devices found.")
+#     exit()
 
-# usb_source = "/media/hahui/NEW VOLUME"
+usb_source = "/dev/sda1"
 # Destination path
 mp3_destination = "./sound_example"
 
