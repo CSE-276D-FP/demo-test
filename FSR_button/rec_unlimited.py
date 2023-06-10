@@ -63,15 +63,19 @@ def callback(indata, frames, time, status):
     q.put(indata.copy())
 
 
-def start_recording(max_duration):
+def start_recording(max_duration, filename):
+    is_timed_out = False
     try:
         if args.samplerate is None:
             device_info = sd.query_devices(args.device, 'input')
             # soundfile expects an int, sounddevice provides a float:
             args.samplerate = int(device_info['default_samplerate'])
-        if args.filename is None:
+        if filename is None:
             args.filename = tempfile.mktemp(prefix='delme_rec_unlimited_',
                                             suffix='.wav', dir='')
+        elif args.filename is None:
+            args.filename = filename
+            
 
         # Make sure the file is opened before recording anything:
         with sf.SoundFile(args.filename, mode='x', samplerate=args.samplerate,
@@ -85,9 +89,11 @@ def start_recording(max_duration):
                 start_time = time.time()
                 while time.time() < start_time + max_duration:
                     file.write(q.get())
+                is_timed_out = True
                 raise KeyboardInterrupt
     except KeyboardInterrupt:
         print('\nRecording finished: ' + repr(args.filename))
+        return is_timed_out
         parser.exit(0)
     except Exception as e:
         parser.exit(type(e).__name__ + ': ' + str(e))
