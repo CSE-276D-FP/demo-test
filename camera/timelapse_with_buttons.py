@@ -5,6 +5,8 @@ import tkinter as tk
 from PIL import ImageTk, Image
 from threading import Thread
 
+camera = cv2.VideoCapture(0)  # Use index 0 for the first USB camera
+
 class CameraPreview:
     def __init__(self, window):
         self.window = window
@@ -35,7 +37,7 @@ class CameraPreview:
         self.camera.release()
 
 def capture_photo():
-    camera = cv2.VideoCapture(0)  # Use index 0 for the first USB camera
+    # camera = cv2.VideoCapture(0)  # Use index 0 for the first USB camera
     if not camera.isOpened():
         print("Failed to open the camera")
         return
@@ -80,7 +82,7 @@ def capture_photo():
         time.sleep(interval)
 
     # Release the camera
-    camera.release()
+    # camera.release()
 
     # Release the video writer
     video_writer.release()
