@@ -1,62 +1,38 @@
-#!/usr/bin/env python
-# coding: utf-8
-
-# In[1]:
-
-
-from iconify import Icon
-import sys
-from PyQt5.QtWidgets import QApplication, QLabel
-from PyQt5.QtGui import QIcon
-from IPython.display import display
-import time
+import os
 import tkinter as tk
-import datetime
-from tkinter import messagebox
 from tkinter import font
-from PIL import ImageTk, Image
-from PySide2 import QtCore, QtGui, QtWidgets, QtSvg, QtXml
-
-
-# In[4]:
-
 
 def open_alarm():
     # Implement the alarm function later
     pass
 
 def open_stopwatch():
-    os.system('Alarm/stopwatch.py')
+    os.system('python stopwatch.py')
 
 def open_timer():
-    os.system('Alarm/timer.py')
+    os.system('python timer.py')
+
 # the main window
 window = tk.Tk()
 window.title("Alarm Clock")
 
-
 # buttons for alarm, stopwatch, and timer with icons
-alarm_button = tk.Button(window, text="Alarm", compound=tk.LEFT, command=open_alarm)
-alarm_button.pack(side=tk.LEFT, padx=20, pady=20)
+custom_font = font.Font(size=45)
+alarm_button = tk.Button(window, text="Alarm", command=open_alarm, font=custom_font)
+alarm_button.place(x=105, y=150)
 
-stopwatch_button = tk.Button(window,  text="Stopwatch", compound=tk.LEFT, command=open_stopwatch)
-stopwatch_button.pack(side=tk.LEFT, padx=20, pady=20)
+stopwatch_button = tk.Button(window, text="Stopwatch", command=open_stopwatch, font=custom_font)
+stopwatch_button.place(x=580, y=150)
 
-timer_button = tk.Button(window, text="Timer", compound=tk.LEFT, command=open_timer)
-timer_button.pack(side=tk.LEFT, padx=20, pady=20)
+timer_button = tk.Button(window, text="Timer", command=open_timer, font=custom_font)
+timer_button.place(x=330, y=330)
 
-#  the main event loop
+alarm_button = tk.Button(window, text="Alarm", command=open_alarm, font=custom_font)
+alarm_button.place(x=105, y=150)
+
+stopwatch_button = tk.Button(window, text="Stopwatch", command=open_stopwatch, font=custom_font)
+stopwatch_button.place(x=580, y=150)
+
+# the main event loop
+window.geometry('1024x530')
 window.mainloop()
-
-
-# In[ ]:
-
-
-
-
-
-# In[ ]:
-
-
-
-

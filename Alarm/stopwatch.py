@@ -1,11 +1,11 @@
-import tkinter as tk
-from tkinter import messagebox
-from tkinter import font
-from PIL import ImageTk, Image
-from PySide2 import QtCore, QtGui, QtWidgets, QtSvg, QtXml
+# import tkinter as tk
+# from tkinter import messagebox
+# from tkinter import font
+# from PIL import ImageTk, Image
+# from PySide2 import QtCore, QtGui, QtWidgets, QtSvg, QtXml
 import tkinter as Tkinter
 import datetime
-import time
+# import time
 
 counter = datetime.timedelta()
 running = False
@@ -62,7 +62,7 @@ root = Tkinter.Tk()
 root.title("Stopwatch")
 
 # Fixing the window size.
-root.minsize(width=250, height=100)
+root.geometry('1024x530')
 label = Tkinter.Label(root, text="Use stopwatch!", fg="black", font="ROMAN 20 bold")
 label.pack()
 f = Tkinter.Frame(root)

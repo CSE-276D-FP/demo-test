@@ -6,10 +6,10 @@ import pygame
 def play_sound():
     pygame.mixer.music.play()
 
-timer_root = Tk()
+timer_root = Tkinter.Tk()
 
 # setting geometry of tk window
-timer_root.geometry("300x250")
+timer_root.geometry('1024x530')
 timer_root.title("Timer")
 
 
@@ -85,7 +85,7 @@ def submit():
         temp -= 1
 
 # button widget
-btn = Button(timer_root, text='Set Time Countdown', bd='5',
+btn = Tkinter.Button(timer_root, text='Set Time Countdown', bd='5',
             command= submit)
 btn.place(x = 70,y = 120)
 
