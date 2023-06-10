@@ -145,7 +145,7 @@ class Audio:
         self.master = master
 
         custom_font = font.Font(size=25)
-        self.label = Label(self.master, text="Play/Pause/Skip Audio Messages on Bear", font=custom_font)
+        self.label = Label(self.master, text="Use Paws on Bear to Play/Pause/Skip Audio", font=custom_font)
         self.label.place(x=170, y=20)
         
         # self.playButton = Button(self.master, text="Play", command=pygame.mixer.music.play(), height=7, width=15)
