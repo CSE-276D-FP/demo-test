@@ -96,7 +96,7 @@ button_font = pygame.font.Font(None, 24)
 total_button_width = button_width * 2 + 10  # Add spacing between buttons
 
 # Quit button
-quit_text = "Quit"
+quit_text = "Exit"
 quit_text_render = button_font.render(quit_text, True, button_text_color)
 quit_text_rect = quit_text_render.get_rect(center=(screen_width // 2 + total_button_width // 2 - button_width // 2, screen_height - button_height - 10))
 quit_button_rect = pygame.Rect(0, 0, button_width, button_height)
@@ -142,10 +142,10 @@ while running:
         quit_window()
 
     # Draw the button
-    pygame.draw.rect(screen,(255, 0, 0), recording_button_rect)
+    pygame.draw.rect(screen,(150, 150, 150), recording_button_rect)
     screen.blit(recording_text_render, recording_text_rect)
 
-    pygame.draw.rect(screen, (255, 0, 0), quit_button_rect)
+    pygame.draw.rect(screen, (150, 150, 150), quit_button_rect)
     screen.blit(quit_text_render, quit_text_rect)
     
     pygame.display.flip()
