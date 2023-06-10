@@ -1,4 +1,4 @@
-# Source: geeksforgeeks.org/convert-text-speech-python
+# Source: https://geeksforgeeks.org/convert-text-speech-python
 
 from gtts import gTTS
 import os
@@ -31,9 +31,7 @@ for filename in text_input:
     print("Saving file " + filename)
     myobj.save("temp_" + filename)
     
+    # https://www.maketecheasier.com/normalize-music-files-with-ffmpeg/
     os.system('ffmpeg -i {infile} -filter:a "volume=0.5" {outfile}'
                 .format(infile="temp_" + filename, outfile=filename))
     os.remove("temp_" + filename)
-    
-# print("Playing file")
-# os.system("mpg321 welcome.mp3")
