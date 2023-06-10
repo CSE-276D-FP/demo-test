@@ -6,6 +6,9 @@ import pygame
 
 def play_sound():
     pygame.mixer.music.play()
+    
+def exit_program():
+    timer_root.destroy()
 
 timer_root = Tkinter.Tk()
 
@@ -41,7 +44,6 @@ minuteEntry.place(x=400, y=100)
 secondEntry = Tkinter.OptionMenu(timer_root, second, *second_options.keys())
 secondEntry.config(width=3, font=("Arial", 50, ""))
 secondEntry.place(x=500, y=100)
-
 
 def submit():
     try:
@@ -86,8 +88,11 @@ def submit():
 
 # button widget
 custom_font = font.Font(size=45)
-btn = Tkinter.Button(timer_root, text='Set Time Countdown', bd='5',
-            command= submit, font=custom_font)
+btn = Tkinter.Button(timer_root, text='Set Time Countdown', bd='5',command=submit, font=custom_font)
 btn.place(x = 250,y = 250)
+
+custom_font = font.Font(size=45)
+btn = Tkinter.Button(timer_root, text='Exit', bd='5',command=exit_program, font=custom_font)
+btn.place(x = 400, y = 370)
 
 timer_root.mainloop()
