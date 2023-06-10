@@ -34,7 +34,7 @@ pygame.init()
 screen_width = 1020
 screen_height = 600
 screen = pygame.display.set_mode((screen_width, screen_height))
-pygame.display.set_caption("Image Slideshow")
+pygame.display.set_caption("")
 
 # Get a list of image files in the folder
 image_files = [f for f in os.listdir(folder_path) if f.endswith((".jpg", ".jpeg", ".png"))]

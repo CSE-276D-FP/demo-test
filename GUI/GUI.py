@@ -273,7 +273,7 @@ class Cam:
         self.another = StartScreen(self.master)
         
     def load_photo(self):
-        os.system('python ../camera/capture_with_button.py')
+        os.system('python ../camera/capture_optimized.py')
         
     def load_tl(self):
         os.system('python ../camera/timelapse_with_buttons.py')
