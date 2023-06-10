@@ -90,7 +90,7 @@ button_width = 180
 button_height = 60
 button_color = (150, 150, 150)
 button_text_color = (255, 255, 255)
-button_font = pygame.font.Font(None, 24)
+button_font = pygame.font.Font(None, 30)
 
 # Calculate the total width for both buttons
 total_button_width = button_width * 2 + 10  # Add spacing between buttons
@@ -123,7 +123,7 @@ while running:
             elif quit_button_rect.collidepoint(event.pos):
                 quit_window()
 
-    screen.fill((255, 255, 255))
+    screen.fill((200, 200, 200))
 
     # # Draw the buttons
     # pygame.draw.rect(screen, (0, 255, 0), recording_button_rect)
@@ -132,7 +132,7 @@ while running:
     # Check for button clicks
     if is_button_clicked(recording_button_rect):
         recording_text ="Recording"
-        pygame.draw.rect(screen,(0, 255, 0), recording_button_rect)
+        pygame.draw.rect(screen, button_color, recording_button_rect)
         screen.blit(recording_text_render, recording_text_rect)
         record_audio(output_wav, output_mp3, max_duration)
         playback(output_wav)
@@ -142,10 +142,10 @@ while running:
         quit_window()
 
     # Draw the button
-    pygame.draw.rect(screen,(150, 150, 150), recording_button_rect)
+    pygame.draw.rect(screen, button_color, recording_button_rect)
     screen.blit(recording_text_render, recording_text_rect)
 
-    pygame.draw.rect(screen, (150, 150, 150), quit_button_rect)
+    pygame.draw.rect(screen, button_color, quit_button_rect)
     screen.blit(quit_text_render, quit_text_rect)
     
     pygame.display.flip()
