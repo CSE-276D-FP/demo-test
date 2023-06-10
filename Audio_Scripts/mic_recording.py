@@ -90,7 +90,7 @@ button_width = 300
 button_height = 100
 button_color = (150, 150, 150)
 button_text_color = (255, 255, 255)
-button_font = pygame.font.Font(None, 100)
+button_font = pygame.font.Font(None, 85)
 
 # Calculate the total width for both buttons
 total_button_width = button_width * 2 + 10  # Add spacing between buttons
