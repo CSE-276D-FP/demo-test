@@ -9,10 +9,9 @@ def is_USB_plugged_in():
     lines = output.split('\n')
     usb_drives = []
 
-    for line in lines:
-        fields = line.split()
-        if len(fields) >= 4 and (fields[2].lower() == 'usb' or fields[2].lower() == 'media') and fields[3] != '':
-            usb_drives.append(fields[3])
+    for line in output.split('\n'):
+        if line.startswith('/media'):
+            usb_drives.append(line)
 
     return usb_drives
 
@@ -20,16 +19,16 @@ def is_USB_plugged_in():
 # Get the USB drive with media files
 media_usb_drives = is_USB_plugged_in()
 print(media_usb_drives)
-# if len(media_usb_drives) > 0:
-#     # Assume the first media USB drive found is the desired source
-#     usb_source = media_usb_drives[0]
-# else:
-#     print("No media USB drive found.")
-#     exit()
+if len(media_usb_drives) > 0:
+    # Assume the first media USB drive found is the desired source
+    usb_source = media_usb_drives[0]
+else:
+    print("No media USB drive found.")
+    exit()
 
 usb_source = "/media/hahui/NEW VOLUME"
 # Destination path
-mp3_destination = "sound_example"
+mp3_destination = "./sound_example"
 
 all_files = os.listdir(usb_source)
 
