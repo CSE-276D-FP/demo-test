@@ -17,10 +17,10 @@ class StartScreen:
         
         custom_font = font.Font(size=55)
         self.audioButton = Button(self.master, text="Audio", command=self.load_audio, height=2, width=5, font=custom_font)
-        self.audioButton.place(x=70, y=80)
+        self.audioButton.place(x=70, y=90)
 
         self.videoButton = Button(self.master, text="Video", command=self.load_video, height=2, width=5, font=custom_font)
-        self.videoButton.place(x=390, y=80)
+        self.videoButton.place(x=390, y=90)
         
         self.photoButton = Button(self.master, text="Photo", command=self.load_photo, height=2, width=5, font=custom_font)
         self.photoButton.place(x=710, y=80)
