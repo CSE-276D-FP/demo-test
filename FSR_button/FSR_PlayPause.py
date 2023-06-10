@@ -1,6 +1,7 @@
 from gpiozero import Button
 import time
 import pygame
+import os
 from FSR_Abs import FSR_Abs_Button
 
 
@@ -22,11 +23,13 @@ class FSR_PlayPause_Button(FSR_Abs_Button):
     def default_mode(self):
         self.button.when_pressed = self.play_pause
    
-    def cancel_rec_mode(self, recButton):
+    def cancel_rec_mode(self):
         self.toggle = True
-        super().cancel_rec_mode(recButton)
+        super().cancel_rec_mode()
 
-    def replay_rec(self):
-        os.system("cvl 
+    def replay_rec(self, filename):
+        print("Replaying recording")
+        os.system("cvlc --play-and-exit " + filename)
+
     def post_rec_mode(self, filename):
-        self.button.when_pressed = self.replay_rec
+        self.button.when_pressed = self.replay_rec(filename)

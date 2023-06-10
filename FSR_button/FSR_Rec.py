@@ -5,7 +5,6 @@ import os
 
 import sounddevice as sd
 import soundfile as sf
-from pydub import AudioSegment
 
 def record_audio(output_wav, output_mp3, max_duration):
     # Set audio parameters
@@ -26,12 +25,6 @@ def record_audio(output_wav, output_mp3, max_duration):
 
     # Save the recorded audio as a WAV file
     sf.write(output_wav, audio_data, sample_rate)
-
-def save_audio(output_wav):
-    # Convert WAV to MP3
-    wav_audio = AudioSegment.from_wav(output_wav)
-    wav_audio.export(output_mp3, format="mp3")
-    os.remove(output_wav)
 
 # stackoverflow.com/questions/10840533/most-pythonic-way-to-delete-a-file-which-may-not-exist
 def delete_audio(output_wav):
@@ -64,7 +57,7 @@ class FSR_Rec_Button:
         self.button.when_pressed = self.start_recording
 
         for b in self.otherButtons:
-            b.cancel_rec_mode(self)
+            b.cancel_rec_mode()
 
     def set_all_default(self):
         for b in self.otherButtons:
@@ -90,13 +83,11 @@ class FSR_Rec_Button:
         print("Stop recording - list options for different save/delete/record")
         sd.stop()
         
-
         self.button.when_pressed = self.replay_rec_mode
 
-        '''
         for b in self.otherButtons:
             b.post_rec_mode(self, self.recentRecording)
-        '''
+        
 
     def replay_rec_mode(self):
         print("Re-recording")
@@ -104,11 +95,5 @@ class FSR_Rec_Button:
         self.trigger_rec_mode()
         # self.set_all_default()
 
-    def replay_rec(self):
-        raise("Not implemented yet")
-        return
-    
-    def rec_mode(self):
-        self.button.when_pressed = self.replay_rec
 
 
