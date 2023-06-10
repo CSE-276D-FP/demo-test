@@ -290,7 +290,7 @@ class Clock:
         
         # os.system('python ../Alarm/Alarm_Reminder.py')
         
-        self.menuButton = Button(self.master, text="Back", command=self.load_menu, height=2, width=8)
+        self.menuButton = Button(self.master, text="Menu", command=self.load_menu, height=2, width=8)
         self.menuButton.grid(row=4, column=4)
         
     def load_menu(self):
@@ -306,19 +306,80 @@ class Instruction:
         # keep `root` in `self.master`
         self.master = master
         
-        custom_font = font.Font(size=30)
-        self.label = Label(self.master, text="Welcome to the  Instructions Page!", font=custom_font)
-        self.label.place(x=180, y=20)
+        self.canvas = Canvas(root)
+        self.scrollbar = Scrollbar(root, orient="vertical", command=self.canvas.yview)
+        self.scrollable_frame = Frame(self.canvas)
+
+        self.scrollable_frame.bind(
+            "<Configure>",
+            lambda e: self.canvas.configure(
+                scrollregion=self.canvas.bbox("all")
+            )
+        )
+        self.canvas.create_window((0, 0), window=self.scrollable_frame, anchor="nw")
+        self.canvas.configure(yscrollcommand=self.scrollbar.set)
         
-        self.menuButton = Button(self.master, text="Menu", command=self.load_menu, height=2, width=8)
-        self.menuButton.lace(x=600, y=200)
+        # Add some content to the scrollable frame
+        # for i in range(50):
+        #     label = Label(self.scrollable_frame, text="Label {}".format(i))
+        #     label.grid(row=i, column=0, sticky="w")
+        
+        custom_font = font.Font(size=25)
+        label = Label(self.scrollable_frame, text="Welcome to the Instructions Page!", font = custom_font)
+        # label = Label(self.scrollable_frame, text="Welcome to the Instructions Page!")
+        label.grid(row=0, column=0, sticky="w")
+        
+        label = Label(self.scrollable_frame, text="Audio: Click on Audio button to hear your saved audio messages. Listen to your personalized messages")
+        label.grid(row=1, column=0, sticky="w")
+        
+        label = Label(self.scrollable_frame, text="Video: Click on the ‘Video’ button to play your saved timelapse videos. Relive your fun, favorite, and proud moments.")
+        label.grid(row=2, column=0, sticky="w")
+        
+        label = Label(self.scrollable_frame, text="Photo: Click on the ‘Photo’ button to see your saved photos. The photos will run on a loop and timelapse through your photos.")
+        label.grid(row=3, column=0, sticky="w")
+        
+        label = Label(self.scrollable_frame, text="         Click ‘Pause’ to stop on a photo. Click ‘Play’ to resume the slideshow. Click ‘Exit’ to return to menu")
+        label.grid(row=4, column=0, sticky="w")
+        
+        label = Label(self.scrollable_frame, text="Record: Click on Record to either access the ‘Microphone’ or ‘Camera’")
+        label.grid(row=5, column=0, sticky="w")
+        
+        label = Label(self.scrollable_frame, text="     -Microphone: click on ‘Microphone’ to record an audio message")
+        label.grid(row=6, column=0, sticky="w")
+        
+        label = Label(self.scrollable_frame, text="         -Click on ‘Yes’ to to open the recording window. Click on ‘Record’ to begin recording. Click on “Exit” to close the window")
+        label.grid(row=7, column=0, sticky="w")
+        
+        label = Label(self.scrollable_frame, text="     -Camera: click on ‘Camera’ to take a photo or a timelapse video")
+        label.grid(row=8, column=0, sticky="w")
+        
+        label = Label(self.scrollable_frame, text="         -Click on ‘Photo’ to open camera preview window. Click on ‘Capture’ to take a photo")
+        label.grid(row=9, column=0, sticky="w")
+        
+        label = Label(self.scrollable_frame, text="         -Click on ‘Timelapse Video’ to open camera preview window. Click on ‘Start Capture’ to take a timelapse video")
+        label.grid(row=10, column=0, sticky="w")
+            
+        # Add a button to the scrollable frame
+        button = Button(self.scrollable_frame, text="Menu", command=self.load_menu)
+        button.grid(row=20, column=0, pady=10)
+
+        # Place the canvas and scrollbar in the root window
+        self.canvas.grid(row=0, column=0, sticky="nsew")
+        self.scrollbar.grid(row=0, column=1, sticky="ns")
+
+        # Configure grid weights to allow expansion
+        root.grid_rowconfigure(0, weight=1)
+        root.grid_columnconfigure(0, weight=1)
+        
+        root.mainloop()
+    
         
     def load_menu(self):
-        self.label.destroy()
-        self.menuButton.destroy()
+        self.canvas.destroy()
         
         # use `root` with another class
         self.another = StartScreen(self.master)
+
 
 root = Tk()
 root.geometry('1024x530')
