@@ -1,6 +1,7 @@
 import time
 import tkinter as Tkinter
 from tkinter import messagebox
+from tkinter import font
 import pygame
 
 def play_sound():
@@ -30,17 +31,16 @@ second.set("00")
 
 # Use Entry class to take input from the user
 hourEntry = Tkinter.OptionMenu(timer_root, hour, *hour_options.keys())
-hourEntry.config(width=3, font=("Arial", 18, ""))
-hourEntry.place(x=80, y=20)
+hourEntry.config(width=3, font=("Arial", 50, ""))
+hourEntry.place(x=300, y=100)
 
 minuteEntry = Tkinter.OptionMenu(timer_root, minute, *minute_options.keys())
-minuteEntry.config(width=3, font=("Arial", 18, ""))
-minuteEntry.place(x=130, y=20)
+minuteEntry.config(width=3, font=("Arial", 50, ""))
+minuteEntry.place(x=400, y=100)
 
 secondEntry = Tkinter.OptionMenu(timer_root, second, *second_options.keys())
-secondEntry.config(width=3, font=("Arial", 18, ""))
-secondEntry.place(x=180, y=20)
-
+secondEntry.config(width=3, font=("Arial", 50, ""))
+secondEntry.place(x=500, y=100)
 
 
 def submit():
@@ -85,8 +85,9 @@ def submit():
         temp -= 1
 
 # button widget
+custom_font = font.Font(size=45)
 btn = Tkinter.Button(timer_root, text='Set Time Countdown', bd='5',
-            command= submit)
-btn.place(x = 70,y = 120)
+            command= submit, font=custom_font)
+btn.place(x = 250,y = 200)
 
 timer_root.mainloop()
