@@ -5,7 +5,7 @@ import subprocess
 def is_USB_plugged_in():
     result = subprocess.run(['ls', '/media/*/'], capture_output=True, text=True)
     output = result.stdout
-
+    print(output)
     media_devices = []
 
     if output:
@@ -22,7 +22,8 @@ if len(media_devices) > 0:
     print(f"USB source: {usb_source}")
 else:
     print("No media devices found.")
-    
+    exit()
+
 # usb_source = "/media/hahui/NEW VOLUME"
 # Destination path
 mp3_destination = "./sound_example"
