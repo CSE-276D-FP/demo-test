@@ -172,7 +172,6 @@ class Rec:
         # keep `root` in `self.master`
         self.master = master
         
-        
         custom_font = font.Font(size=30)
         self.label = Label(self.master, text="Choose Microphone or Camera", font=custom_font)
         self.label.place(x=200, y=20)
@@ -232,6 +231,7 @@ class Mic:
         self.menuButton = Button(self.master, text="Menu", command=self.load_menu, height=2, width=8, font=custom_font)
         self.menuButton.place(x=600, y=200)
         
+        
     def load_menu(self):
         self.yesButton.destroy()
         self.label.destroy()
@@ -249,19 +249,20 @@ class Cam:
         # keep `root` in `self.master`
         self.master = master
 
-        custom_font = font.Font(size=40)
+        custom_font = font.Font(size=25)
         self.label = Label(self.master, text="Do you want to take a photo or a timelapse Video?", font=custom_font)
-        self.label.place(x=100, y=20)
+        self.label.place(x=180, y=20)
         
-        custom_font = font.Font(size=60)
-        self.photoButton = Button(self.master, text="Photo", command=self.load_photo, height=2, width=8, font=custom_font)
-        self.photoButton.place(x=125, y=200)
+        custom_font = font.Font(size=45)
+        self.photoButton = Button(self.master, text="Photo", command=self.load_photo, height=2, width=9, font=custom_font)
+        self.photoButton.place(x=105, y=150)
         
-        self.tlButton = Button(self.master, text="Timelapse\n Video", command=self.load_tl, height=2, width=8, font=custom_font)
-        self.tlButton.place(x=600, y=200)
+        self.tlButton = Button(self.master, text="Timelapse\n Video", command=self.load_tl, height=2, width=9, font=custom_font)
+        self.tlButton.place(x=580, y=150)
         
-        self.menuButton = Button(self.master, text="Menu", command=self.load_menu, height=2, width=8, font=custom_font)
-        self.menuButton.place(x=350, y=400)
+        self.menuButton = Button(self.master, text="Menu", command=self.load_menu, height=2, width=9, font=custom_font)
+        self.menuButton.place(x=330, y=330)
+        
         
     def load_menu(self):
         self.photoButton.destroy()
@@ -304,12 +305,13 @@ class Instruction:
 
         # keep `root` in `self.master`
         self.master = master
-
-        self.label = Label(self.master, text="Welcome to the  Instructions Page!")
-        self.label.grid(row=1, column=1)
         
-        self.menuButton = Button(self.master, text="Back", command=self.load_menu, height=2, width=8)
-        self.menuButton.grid(row=4, column=4)
+        custom_font = font.Font(size=30)
+        self.label = Label(self.master, text="Welcome to the  Instructions Page!", font=custom_font)
+        self.label.place(x=200, y=20)
+        
+        self.menuButton = Button(self.master, text="Menu", command=self.load_menu, height=2, width=8)
+        self.menuButton.lace(x=600, y=200)
         
     def load_menu(self):
         self.label.destroy()
