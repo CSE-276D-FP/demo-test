@@ -5,8 +5,9 @@ import os
 
 import sounddevice as sd
 import soundfile as sf
+from rec_unlimited import start_recording
 
-def record_audio(output_wav, output_mp3, max_duration):
+def record_audio(output_wav, max_duration):
     # Set audio parameters
     sample_rate = 44100
     duration = max_duration
@@ -77,16 +78,18 @@ class FSR_Rec_Button:
 
         output_wav = os.path.join(folder_path, self.recentRecording + ".wav")
         output_mp3 = os.path.join(folder_path, self.recentRecording + ".mp3")
-        max_duration = 5
+        max_duration = 10
 
-        record_audio(output_wav, output_mp3, max_duration)
-
-        
+        # record_audio(output_wav, max_duration)
         self.button.when_pressed = self.end_recording
-        
+
+        self.is_timed_out = False
+        self.is_timed_out = start_recording(output_wav, max_duration)
 
     def end_recording(self):
         print("Stop recording - list options for different save/delete/record")
+        if not self.is_timed_out:
+            raise KeyboardInterrupt
         os.system("cvlc --play-and-exit ../tts/recording_stopped.mp3")
         os.system("cvlc --play-and-exit ../tts/post_recording_prompt.mp3")
 
