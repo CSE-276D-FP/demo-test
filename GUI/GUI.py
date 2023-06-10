@@ -13,27 +13,27 @@ class StartScreen:
         self.master = master 
         custom_font = font.Font(size=55)
         self.label = Label(self.master, text="Menu", font=custom_font)
-        self.label.place(x=450, y=20)
+        self.label.place(x=350, y=20)
         
         custom_font = font.Font(size=70)
         self.audioButton = Button(self.master, text="Audio", command=self.load_audio, height=2, width=5, font=custom_font)
-        self.audioButton.place(x=50, y=100)
+        self.audioButton.place(x=30, y=100)
 
         self.videoButton = Button(self.master, text="Video", command=self.load_video, height=2, width=5, font=custom_font)
-        self.videoButton.place(x=400, y=100)
+        self.videoButton.place(x=300, y=100)
         
         self.photoButton = Button(self.master, text="Photo", command=self.load_photo, height=2, width=5, font=custom_font)
-        self.photoButton.place(x=750, y=100)
+        self.photoButton.place(x=570, y=100)
         
         self.clockButton = Button(self.master, text="Clock", command=self.load_clock, height=2, width=5, font=custom_font)
-        self.clockButton.place(x=50, y=350)
+        self.clockButton.place(x=30, y=350)
         
         self.recButton = Button(self.master, text="Record", command=self.load_rec, height=2, width=5, font=custom_font)
-        self.recButton.place(x=400, y=350)
+        self.recButton.place(x=300, y=350)
         
         inst_custom_font = font.Font(size=47)
         self.instButton = Button(self.master, text="How To\n Use", command=self.load_inst, height=3, width=7, font=inst_custom_font)
-        self.instButton.place(x=750, y=350)
+        self.instButton.place(x=570, y=350)
 
     def load_audio(self):
         self.label.destroy()
@@ -319,7 +319,7 @@ class Instruction:
         self.another = StartScreen(self.master)
 
 root = Tk()
-root.geometry('1020x600')
+root.geometry('930x545')
 root.configure(bg='grey')
 run = StartScreen(root)
 root.mainloop()
