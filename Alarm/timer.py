@@ -88,6 +88,6 @@ def submit():
 custom_font = font.Font(size=45)
 btn = Tkinter.Button(timer_root, text='Set Time Countdown', bd='5',
             command= submit, font=custom_font)
-btn.place(x = 250,y = 200)
+btn.place(x = 250,y = 250)
 
 timer_root.mainloop()

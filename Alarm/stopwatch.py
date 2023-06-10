@@ -63,7 +63,7 @@ root.title("Stopwatch")
 
 # Fixing the window size.
 root.geometry('1024x530')
-label = Tkinter.Label(root, text="Use stopwatch!", fg="black", font="ROMAN 25 bold", height=10, width=20)
+label = Tkinter.Label(root, text="Use stopwatch!", fg="black", font="ROMAN 30 bold", height=5, width=15)
 label.pack()
 f = Tkinter.Frame(root)
 custom_font = font.Font(size=45)
