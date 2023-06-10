@@ -308,7 +308,7 @@ class Instruction:
         
         custom_font = font.Font(size=30)
         self.label = Label(self.master, text="Welcome to the  Instructions Page!", font=custom_font)
-        self.label.place(x=200, y=20)
+        self.label.place(x=180, y=20)
         
         self.menuButton = Button(self.master, text="Menu", command=self.load_menu, height=2, width=8)
         self.menuButton.lace(x=600, y=200)

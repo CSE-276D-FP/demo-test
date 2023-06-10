@@ -46,7 +46,7 @@ if len(image_files) == 0:
 current_index = 0
 
 # Set the time interval between image switches (in seconds)
-interval = 1
+interval = 3
 
 # Set the initial time for the timer
 timer_start = time.time()

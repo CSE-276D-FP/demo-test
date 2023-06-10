@@ -85,7 +85,7 @@ button_frame = tk.Frame(window)
 button_frame.pack(side=tk.BOTTOM, pady=10)
 
 # Create a capture button
-capture_button = tk.Button(button_frame, text="Start Capture", command=lambda: start_capture(camera))
+capture_button = tk.Button(button_frame, text="Capture", command=lambda: start_capture(camera))
 capture_button.pack(side=tk.LEFT, padx=10)
 
 # Create an exit button
