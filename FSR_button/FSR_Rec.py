@@ -25,8 +25,6 @@ def record_audio(output_wav, output_mp3, max_duration):
 
     # Save the recorded audio as a WAV file
     sf.write(output_wav, audio_data, sample_rate)
-    time.sleep(2)
-    print(".wav file written")
 
 # stackoverflow.com/questions/10840533/most-pythonic-way-to-delete-a-file-which-may-not-exist
 def delete_audio(output_wav):
@@ -36,9 +34,7 @@ def delete_audio(output_wav):
         pass
 
 def gen_filename():
-    # create descending filename IDs for newer files to make them appear
-    # at the top of the playlist
-    return str(100000000000 - int(time.time())) + "local_recording"
+    return "local_recording" + str(int(time.time()))
 
 class FSR_Rec_Button:
     def __init__(self, pin, otherButtons):
@@ -69,10 +65,10 @@ class FSR_Rec_Button:
         self.default_mode()
     
     def start_recording(self):
+        print("Start recording")
+        
         folder_path = os.getcwd()
         self.recentRecording = gen_filename()
-        
-        print("Start recording file", self.recentRecording)
         output_wav = os.path.join(folder_path, self.recentRecording + ".wav")
         output_mp3 = os.path.join(folder_path, self.recentRecording + ".mp3")
         max_duration = 5
@@ -90,7 +86,7 @@ class FSR_Rec_Button:
         self.button.when_pressed = self.replay_rec_mode
 
         for b in self.otherButtons:
-            b.post_rec_mode(self.recentRecording)
+            b.post_rec_mode(self, self.recentRecording)
         
 
     def replay_rec_mode(self):

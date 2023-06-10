@@ -33,16 +33,10 @@ class FSR_Skip_Button(FSR_Abs_Button):
     def rec_mode(self):
         self.button.when_pressed = self.no_play_rec
 
-    def no_save_rec(self):
+    def no_save_rec(self, filename):
         print("Exiting record mode")
-        if self.filename is None:
-            raise RuntimeError("Make sure you call post_rec_mode")
-        delete_audio(self.filename + ".wav")
-        
-        if self.recButton is None:
-            raise RuntimeError("Make sure to add rec button")
-        self.recButton.set_all_default()
+        delete_audio(filename)
+        self.cancel_rec()
 
     def post_rec_mode(self, filename):
-        self.filename = filename
-        self.button.when_pressed = self.no_save_rec
+        self.button.when_pressed = self.no_save_rec(filename)

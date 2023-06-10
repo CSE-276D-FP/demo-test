@@ -30,15 +30,6 @@ clock = pygame.time.Clock()
 current_audio_index = 0
 paused = False
 
-def refresh_audio():
-    global audio_files, current_audio_index, skipButton, playButton
-    audio_files = sorted([f for f in os.listdir(folder_path) if f.endswith('.mp3')])
-    current_audio_index = 0
-    skipButton.update_audio(current_audio_index)
-
-    play_next_audio(current_audio_index)
-    playButton.play_pause()
-
 def play_next_audio(current_audio_index):
     global audio_files, folder_path
     if current_audio_index < len(audio_files):
@@ -59,7 +50,6 @@ skipButton.default_mode()
 
 saveButton = FSR_Save_Button(26)
 saveButton.default_mode()
-saveButton.add_refresh_fcn(refresh_audio)
 
 recButton = FSR_Rec_Button(19, [playButton, skipButton, saveButton])
 recButton.default_mode()

@@ -27,12 +27,9 @@ class FSR_PlayPause_Button(FSR_Abs_Button):
         self.toggle = True
         super().cancel_rec_mode()
 
-    def replay_rec(self):
+    def replay_rec(self, filename):
         print("Replaying recording")
-        if self.filename is None:
-            raise RuntimeError("Make sure you call post_rec_mode")
-        os.system("cvlc --play-and-exit " + self.filename + ".wav")
+        os.system("cvlc --play-and-exit " + filename)
 
     def post_rec_mode(self, filename):
-        self.filename = filename
-        self.button.when_pressed = self.replay_rec
+        self.button.when_pressed = self.replay_rec(filename)
