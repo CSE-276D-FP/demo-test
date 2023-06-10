@@ -144,8 +144,9 @@ class Audio:
         # keep `root` in `self.master`
         self.master = master
 
-        self.label = Label(self.master, text="Play/Pause/Skip Audio Messages on Bear")
-        self.label.grid(row=1, column=1)
+        custom_font = font.Font(size=25)
+        self.label = Label(self.master, text="Play/Pause/Skip Audio Messages on Bear", font=custom_font)
+        self.label.place(x=170, y=20)
         
         # self.playButton = Button(self.master, text="Play", command=pygame.mixer.music.play(), height=7, width=15)
         # self.playButton.grid(row=3, column=40)
@@ -158,8 +159,8 @@ class Audio:
         
         # os.system('python ../Audio_Scripts/contAudioButton2.py')
         
-        self.menuButton = Button(self.master, text="Menu", command=self.load_menu, height=2, width=8)
-        self.menuButton.grid(row=4, column=4)
+        self.menuButton = Button(self.master, text="Menu", command=self.load_menu, height=2, width=9, font=custom_font)
+        self.menuButton.place(x=330, y=150)
         
     def load_menu(self):
         self.label.destroy()
@@ -206,7 +207,6 @@ class Rec:
         self.camButton = Button(self.master, text="Camera", command=self.load_cam, height=2, width=9, font=custom_font)
         self.camButton.place(x=580, y=150)
         
-        # os.system('python ../Audio_Scripts/mic_recording.py')
         self.menuButton = Button(self.master, text="Menu", command=self.load_menu, height=2, width=9, font=custom_font)
         self.menuButton.place(x=330, y=330)
         
