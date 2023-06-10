@@ -319,7 +319,7 @@ class Instruction:
         self.another = StartScreen(self.master)
 
 root = Tk()
-root.geometry('980x525')
+root.geometry('1000x530')
 root.configure(bg='grey')
 run = StartScreen(root)
 root.mainloop()
