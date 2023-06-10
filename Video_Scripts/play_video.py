@@ -86,7 +86,7 @@ mp4_files = [file for file in os.listdir(directory) if file.endswith(".mp4")]
 for video_name in mp4_files:
     video_path = os.path.join(directory, video_name)
     clip = VideoFileClip(video_path.replace("\\", "/"))
-    final = clip.fx(vfx.resize, width=1020, height=530)
+    final = clip.fx(vfx.resize, width=1090, height=510)
     # clip.preview()
     final.preview()
 
