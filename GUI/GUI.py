@@ -251,7 +251,7 @@ class Cam:
 
         custom_font = font.Font(size=25)
         self.label = Label(self.master, text="Do you want to take a photo or a timelapse Video?", font=custom_font)
-        self.label.place(x=140, y=20)
+        self.label.place(x=110, y=20)
         
         custom_font = font.Font(size=45)
         self.photoButton = Button(self.master, text="Photo", command=self.load_photo, height=2, width=9, font=custom_font)
