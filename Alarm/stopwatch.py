@@ -1,6 +1,6 @@
 # import tkinter as tk
 # from tkinter import messagebox
-# from tkinter import font
+from tkinter import font
 # from PIL import ImageTk, Image
 # from PySide2 import QtCore, QtGui, QtWidgets, QtSvg, QtXml
 import tkinter as Tkinter
@@ -63,12 +63,13 @@ root.title("Stopwatch")
 
 # Fixing the window size.
 root.geometry('1024x530')
-label = Tkinter.Label(root, text="Use stopwatch!", fg="black", font="ROMAN 20 bold")
+label = Tkinter.Label(root, text="Use stopwatch!", fg="black", font="ROMAN 25 bold", height=10, width=20)
 label.pack()
 f = Tkinter.Frame(root)
-start = Tkinter.Button(f, text='Start', width=6, command=lambda:Start(label))
-stop = Tkinter.Button(f, text='Stop', width=6, state='disabled', command=Stop)
-reset = Tkinter.Button(f, text='Reset', width=6, state='disabled', command=lambda:Reset(label))
+custom_font = font.Font(size=45)
+start = Tkinter.Button(f, text='Start', height=2, width=5, command=lambda:Start(label), font=custom_font)
+stop = Tkinter.Button(f, text='Stop',  height=2, width=5, state='disabled', command=Stop, font=custom_font)
+reset = Tkinter.Button(f, text='Reset', height=2, width=5, state='disabled', command=lambda:Reset(label), font=custom_font)
 f.pack(anchor='center', pady=5)
 start.pack(side="left")
 stop.pack(side="left")
