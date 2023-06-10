@@ -22,11 +22,12 @@ print(media_usb_drives)
 if len(media_usb_drives) > 0:
     # Assume the first media USB drive found is the desired source
     usb_source = media_usb_drives[0]
+    print(usb_source)
 else:
     print("No media USB drive found.")
     exit()
 
-usb_source = "/media/hahui/NEW VOLUME"
+# usb_source = "/media/hahui/NEW VOLUME"
 # Destination path
 mp3_destination = "./sound_example"
 
