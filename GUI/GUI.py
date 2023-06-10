@@ -26,14 +26,14 @@ class StartScreen:
         self.photoButton.place(x=710, y=100)
         
         self.clockButton = Button(self.master, text="Clock", command=self.load_clock, height=2, width=5, font=custom_font)
-        self.clockButton.place(x=70, y=330)
+        self.clockButton.place(x=70, y=320)
         
         self.recButton = Button(self.master, text="Record", command=self.load_rec, height=2, width=5, font=custom_font)
-        self.recButton.place(x=390, y=330)
+        self.recButton.place(x=390, y=320)
         
         inst_custom_font = font.Font(size=37)
         self.instButton = Button(self.master, text="How To\n Use", command=self.load_inst, height=3, width=7, font=inst_custom_font)
-        self.instButton.place(x=710, y=330)
+        self.instButton.place(x=710, y=320)
 
     def load_audio(self):
         self.label.destroy()
