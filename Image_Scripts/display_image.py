@@ -32,7 +32,7 @@ pygame.init()
 
 # Set the screen size to 1020x600
 screen_width = 1020
-screen_height = 600
+screen_height = 530
 screen = pygame.display.set_mode((screen_width, screen_height))
 pygame.display.set_caption("")
 
