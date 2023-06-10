@@ -86,11 +86,11 @@ pygame.display.set_caption("Mic Recording")
 font = pygame.font.Font(None, 24)
 
 # Button settings
-button_width = 180
-button_height = 60
+button_width = 250
+button_height = 100
 button_color = (150, 150, 150)
 button_text_color = (255, 255, 255)
-button_font = pygame.font.Font(None, 60)
+button_font = pygame.font.Font(None, 100)
 
 # Calculate the total width for both buttons
 total_button_width = button_width * 2 + 10  # Add spacing between buttons
