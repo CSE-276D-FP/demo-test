@@ -22,6 +22,29 @@ class StartScreen:
         self.videoButton = Button(self.master, text="Video", command=self.load_video, height=2, width=5, font=custom_font)
         self.videoButton.place(x=390, y=100)
         
+        # photo = PhotoImage(file="icons/photo.png")
+        
+        # # Get the dimensions of the text
+        # text_width = len("Photo") * 4  # Adjust the factor as needed
+        # text_height = 10  # Adjust the height as needed
+
+        # # Get the dimensions of the image
+        # image_width = photo.width()
+        # image_height = photo.height()
+
+        # # Calculate the button width and height
+        # button_width = max(text_width, image_width) + 6  # Add padding
+        # button_height = text_height + image_height + 6 # Add padding
+
+        # # Resize the image to fit the button
+        # resized_image = photo.subsample(max(image_width // button_width, 1),
+        #                                 max(image_height // button_height, 1))
+        
+        # self.button_icon = resized_image
+    
+        # self.photoButton = Button(self.master, text="Photo", image=self.button_icon, compound="left", command=self.load_photo, height=button_height, width=button_width, font=custom_font)
+        # self.photoButton.place(x=710, y=100)
+        
         self.photoButton = Button(self.master, text="Photo", command=self.load_photo, height=2, width=5, font=custom_font)
         self.photoButton.place(x=710, y=100)
         
@@ -329,25 +352,25 @@ class Instruction:
         # label = Label(self.scrollable_frame, text="Welcome to the Instructions Page!")
         label.grid(row=0, column=0, sticky="w")
         
-        label = Label(self.scrollable_frame, text="Audio: Click on Audio button to hear your saved audio messages. Listen to your personalized messages")
+        label = Label(self.scrollable_frame, text="Audio: Click on Audio button to hear your saved audio messages. Listen to your personalized messages\n")
         label.grid(row=1, column=0, sticky="w")
         
-        label = Label(self.scrollable_frame, text="Video: Click on the ‘Video’ button to play your saved timelapse videos. Relive your fun, favorite, and proud moments.")
+        label = Label(self.scrollable_frame, text="Video: Click on the ‘Video’ button to play your saved timelapse videos. Relive your fun, favorite, and proud moments.\n")
         label.grid(row=2, column=0, sticky="w")
         
         label = Label(self.scrollable_frame, text="Photo: Click on the ‘Photo’ button to see your saved photos. The photos will run on a loop and timelapse through your photos.")
         label.grid(row=3, column=0, sticky="w")
         
-        label = Label(self.scrollable_frame, text="         Click ‘Pause’ to stop on a photo. Click ‘Play’ to resume the slideshow. Click ‘Exit’ to return to menu")
+        label = Label(self.scrollable_frame, text="         Click ‘Pause’ to stop on a photo. Click ‘Play’ to resume the slideshow. Click ‘Exit’ to return to menu\n")
         label.grid(row=4, column=0, sticky="w")
         
-        label = Label(self.scrollable_frame, text="Record: Click on Record to either access the ‘Microphone’ or ‘Camera’")
+        label = Label(self.scrollable_frame, text="Record: Click on Record to either access the ‘Microphone’ or ‘Camera’\n")
         label.grid(row=5, column=0, sticky="w")
         
         label = Label(self.scrollable_frame, text="     -Microphone: click on ‘Microphone’ to record an audio message")
         label.grid(row=6, column=0, sticky="w")
         
-        label = Label(self.scrollable_frame, text="         -Click on ‘Yes’ to to open the recording window. Click on ‘Record’ to begin recording. Click on “Exit” to close the window")
+        label = Label(self.scrollable_frame, text="         -Click on ‘Yes’ to to open the recording window. Click on ‘Record’ to begin recording. Click on “Exit” to close the window\n")
         label.grid(row=7, column=0, sticky="w")
         
         label = Label(self.scrollable_frame, text="     -Camera: click on ‘Camera’ to take a photo or a timelapse video")
@@ -356,7 +379,7 @@ class Instruction:
         label = Label(self.scrollable_frame, text="         -Click on ‘Photo’ to open camera preview window. Click on ‘Capture’ to take a photo")
         label.grid(row=9, column=0, sticky="w")
         
-        label = Label(self.scrollable_frame, text="         -Click on ‘Timelapse Video’ to open camera preview window. Click on ‘Start Capture’ to take a timelapse video")
+        label = Label(self.scrollable_frame, text="         -Click on ‘Timelapse Video’ to open camera preview window. Click on ‘Start Capture’ to take a timelapse video\n")
         label.grid(row=10, column=0, sticky="w")
             
         # Add a button to the scrollable frame
