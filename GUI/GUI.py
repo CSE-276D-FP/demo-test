@@ -173,9 +173,9 @@ class Rec:
         self.master = master
         
         
-        custom_font = font.Font(size=35)
+        custom_font = font.Font(size=30)
         self.label = Label(self.master, text="Choose Microphone or Camera", font=custom_font)
-        self.label.place(x=220, y=20)
+        self.label.place(x=200, y=20)
         
         custom_font = font.Font(size=45)
         self.micButton = Button(self.master, text="Microphone", command=self.load_mic, height=2, width=9, font=custom_font)
