@@ -175,18 +175,18 @@ class Rec:
         
         custom_font = font.Font(size=35)
         self.label = Label(self.master, text="Choose Microphone or Camera", font=custom_font)
-        self.label.place(x=270, y=20)
+        self.label.place(x=250, y=20)
         
-        custom_font = font.Font(size=50)
+        custom_font = font.Font(size=45)
         self.micButton = Button(self.master, text="Microphone", command=self.load_mic, height=2, width=8, font=custom_font)
-        self.micButton.place(x=125, y=150)
+        self.micButton.place(x=105, y=150)
         
         self.camButton = Button(self.master, text="Camera", command=self.load_cam, height=2, width=8, font=custom_font)
-        self.camButton.place(x=600, y=150)
+        self.camButton.place(x=580, y=150)
         
         # os.system('python ../Audio_Scripts/mic_recording.py')
         self.menuButton = Button(self.master, text="Menu", command=self.load_menu, height=2, width=8, font=custom_font)
-        self.menuButton.place(x=350, y=330)
+        self.menuButton.place(x=330, y=330)
         
     def load_menu(self):
         self.label.destroy()
