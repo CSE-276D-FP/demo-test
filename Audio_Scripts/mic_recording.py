@@ -98,7 +98,7 @@ total_button_width = button_width * 2 + 10  # Add spacing between buttons
 # Quit button
 quit_text = "Exit"
 quit_text_render = button_font.render(quit_text, True, button_text_color)
-quit_text_rect = quit_text_render.get_rect(center=(button_width, button_height))
+quit_text_rect = quit_text_render.get_rect(center=(500, 200))
 quit_button_rect = pygame.Rect(0, 0, button_width, button_height)
 quit_button_rect.center = quit_text_rect.center
 
