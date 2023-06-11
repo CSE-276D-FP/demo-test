@@ -13,6 +13,8 @@ text_input = {
     ,
     'recording_stopped.mp3'     : '''Recording stopped'''
     ,
+    'recording_timeout.mp3'     : '''Max recording length exceeded.'''
+    ,
     'post_recording_prompt.mp3' : '''To play back your recording, press the play button. 
             To save your recording, press the save button. 
             To discard your recording, press the skip button.

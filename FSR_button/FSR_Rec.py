@@ -86,6 +86,10 @@ class FSR_Rec_Button:
         self.is_timed_out = False
         self.is_timed_out = start_recording(output_wav, max_duration)
 
+        if self.is_timed_out:
+            os.system("cvlc --play-and-exit ../tts/recording_timeout.mp3")
+            self.end_recording()
+
     def end_recording(self):
         print("Stop recording - list options for different save/delete/record")
         if not self.is_timed_out:
