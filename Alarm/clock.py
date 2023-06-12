@@ -3,8 +3,7 @@ import tkinter as tk
 from tkinter import font
 
 def open_alarm():
-    # Implement the alarm function later
-    pass
+   os.system('alarm_reminder.py')
 
 def open_stopwatch():
     os.system('python stopwatch.py')
