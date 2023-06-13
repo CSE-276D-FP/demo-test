@@ -1,3 +1,5 @@
+# Test class design with basic gpiozero functions
+
 from gpiozero import Button
 
 class FSR_Button:

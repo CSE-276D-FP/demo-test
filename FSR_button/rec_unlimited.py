@@ -1,5 +1,8 @@
 #!/usr/bin/env python3
 # File modified from: https://github.com/spatialaudio/python-sounddevice/blob/master/examples/rec_unlimited.py
+# Handles the recording of audio used in audio control sequence. Generates a .wav
+# file and has a maximum length limit.
+
 """Create a recording with arbitrary duration.
 
 The soundfile module (https://python-soundfile.readthedocs.io/)
@@ -64,6 +67,19 @@ def callback(indata, frames, time, status):
 
 
 def start_recording(max_duration, filename):
+    """Generates a .wav recording when this function is run. Stops when the max
+        duration is reached on the recording.
+
+    Args:
+        max_duration (int): max length of recording in seconds
+        filename (string): name of the audio recording (without file extension)
+
+    Raises:
+        KeyboardInterrupt: when the recording should be stopped from timeout
+
+    Returns:
+        Boolean: True if recording stopped due to timeout
+    """
     is_timed_out = False
     try:
         if args.samplerate is None:
@@ -86,17 +102,22 @@ def start_recording(max_duration, filename):
                 print('press Ctrl+C to stop the recording')
                 print('#' * 80)
 
+                # Records until the max duration is reached
                 start_time = time.time()
                 while time.time() < start_time + max_duration:
                     file.write(q.get())
                 is_timed_out = True
                 raise KeyboardInterrupt
     except KeyboardInterrupt:
+        # Expected behavior to end the process is the Keyboard Interrupt
+        # (Keyboard Interrupt can be Ctrl+C but it's thrown in the program logic)
         print('\nRecording finished: ' + repr(args.filename))
-        return is_timed_out
+
+        # returns whether recording stopped due to timeout or manual stop
+        return is_timed_out     
         parser.exit(0)
     except Exception as e:
         parser.exit(type(e).__name__ + ': ' + str(e))
 
 if __name__ == "__main__":
-    start_recording(10)
+    start_recording(10)         # test for recording with max duration 10
