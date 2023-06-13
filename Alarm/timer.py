@@ -5,7 +5,11 @@ from tkinter import font
 import pygame
 
 def play_sound():
+    pygame.mixer.init()
+    sound_file = "Alarm/alarm.wav"  
+    pygame.mixer.music.load(sound_file)
     pygame.mixer.music.play()
+
     
 def exit_program():
     timer_root.destroy()
