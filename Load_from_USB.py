@@ -40,3 +40,6 @@ for file in image_files:
     shutil.copy2(source_file, destination_file)
 
 exit()
+
+
+# Source:  https://www.geeksforgeeks.org/python-shutil-copy-method/
