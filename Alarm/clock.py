@@ -1,6 +1,7 @@
 import os
 import tkinter as tk
 from tkinter import font
+from PIL import ImageTk
 
 def open_alarm():
    os.system('alarm_reminder.py')
@@ -16,11 +17,11 @@ window = tk.Tk()
 window.title("Alarm Clock")
 
 # Load the icon images
-alarm_icon = Image.open("noun-alarm.png")
-stopwatch_icon = Image.open("noun-stopwatch-1.png")
-timer_icon = Image.open("/noun-timer.png")
+alarm_icon = open("noun-alarm.png")
+stopwatch_icon = open("noun-stopwatch-1.png")
+timer_icon = open("noun-timer.png")
 
-# Resize the icons if necessary
+# Resize the icons if necessarycd
 icon_width, icon_height = 20, 20  # Adjust the size of the icons as needed
 alarm_icon = alarm_icon.resize((icon_width, icon_height))
 stopwatch_icon = stopwatch_icon.resize((icon_width, icon_height))
@@ -30,7 +31,6 @@ timer_icon = timer_icon.resize((icon_width, icon_height))
 alarm_image = ImageTk.PhotoImage(alarm_icon)
 stopwatch_image = ImageTk.PhotoImage(stopwatch_icon)
 timer_image = ImageTk.PhotoImage(timer_icon)
-
 
 # buttons for alarm, stopwatch, and timer with icons
 custom_font = font.Font(size=45)
