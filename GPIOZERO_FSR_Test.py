@@ -1,3 +1,7 @@
+'''
+NOTE: This file was used for testing and is not used in the final code. It is used to test the FSR using gpiozero import
+'''
+
 from gpiozero import MCP3008
 from time import sleep
 

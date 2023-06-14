@@ -1,9 +1,9 @@
+# Audio Related Scripts
+This folder contain scripts that plays back mp3 files as well as record audio and saves it to the directory sound_example. The folder contains interations of scripts to test out different methods for playback and integration of button controls.The scripts used in the final prototype for the physical buttons and the GUI are listed below.
 
-Audio Player Library Installs:
-pip install keyboard
-pip install python-vlc
-pip
-//conda install -c conda-forge ffmpeg
-// sudo apt install ffmpeg
-Currently:
-audio_test.py is a simple audio test script that plays/pause a single audio file using the keyboard button 'a'
+
+## Scripts:
+
+\- mainAudioControl.py
+
+\- mic_recording.py
