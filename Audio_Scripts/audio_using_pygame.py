@@ -39,3 +39,6 @@ while True:
         # Stop the mixer
         mixer.music.stop()
         break
+
+
+# Source: https://www.geeksforgeeks.org/python-playing-audio-file-in-pygame/
