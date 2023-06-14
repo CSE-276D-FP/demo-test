@@ -3,7 +3,8 @@
 - in `/boot/config.txt` change to `dtoverlay=ov5647`
 - `vcgencmd get_camera` to check supported / detected / libcamera interface
 - `libcamera-hello --qt-preview` based on https://forums.raspberrypi.com/viewtopic.php?t=338799, somehow enabled X forwarding (maybe on VNC) and need to use this option otherwise get an error with `fd 19`
-
+- Use `sudo apt-get install python3-opencv` not `pip install --upgrade opencv-python` for correct install.. We had issues
+- 
 
 From https://www.raspberrypi.com/documentation/computers/camera_software.html#libcamera-and-libcamera-apps:
 ```

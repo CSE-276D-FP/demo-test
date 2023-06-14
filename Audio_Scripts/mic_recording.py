@@ -1,3 +1,12 @@
+'''
+ This program is used for the final prototype
+ This program is will be called from the main GUI.py script
+ It handles recording audio, saving it to the directory sound_example, and playback
+    - It will create a temp WAV file and be converted to an mp3
+    - Has user inputs to save, delete, record
+ The GUI for Recording is created in here using pygame
+'''
+
 import sounddevice as sd
 import soundfile as sf
 import os
@@ -9,7 +18,7 @@ import pygame
 
 
 def record_audio(output_wav, output_mp3, max_duration):
-    # Set audio parameters
+    # Set audio parameters. Used examples from Geeks for Geeks
     sample_rate = 44100
     duration = max_duration
 
@@ -37,15 +46,17 @@ def playback(output_wav):
     sd.play(sf.read(output_wav)[0], samplerate=44100)
     sd.wait()
 
+    # Delete the created WAV file because we are not using it anymore
     os.remove(output_wav)
 
 
 def delete_recording():
-    # Delete the WAV file
+    # Delete the mp3 file. All media files will be deleted at this point
     os.remove(output_mp3)
 
 
 def quit_window():
+    # Close window and exit program
     pygame.quit()
     sys.exit()
 
@@ -156,22 +167,3 @@ sys.exit()
 
 
 ####
-
-
-# # Play the recorded audio
-# sd.play(sf.read(output_wav)[0], samplerate=44100)
-# sd.wait()
-# os.remove(output_wav)
-
-# # Wait for the user to input 's' or any other key
-# print("Press 's' to keep the recording or any other key to delete it.")
-# keyboard_input = keyboard.read_key()
-
-'''
-# Check if the user pressed 's' or any other key
-if keyboard_input.lower() == 's':
-    print("Keeping the recording.")
-else:
-    print("Deleting the recording.")
-    delete_recording()
-'''

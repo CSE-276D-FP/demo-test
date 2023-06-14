@@ -1,6 +1,13 @@
 import vlc
 import keyboard
 
+'''
+This is one option to play mp3 file.
+This program will use VLC media player to play audio from a specific file
+It also has user input to pause and play media
+NOTE: This file was used for testing and is not used in the final code
+'''
+
 def play_pause(p):
     if p.is_playing():
         p.pause()
