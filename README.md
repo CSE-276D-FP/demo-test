@@ -1,0 +1,1 @@
+Use start_bear_apps to launch all necessary scripts to use the physical buttons on the bear and the GUI. Make this script an executable icon on the desktop screen so that it can be launched using the touchscreen

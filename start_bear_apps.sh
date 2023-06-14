@@ -6,6 +6,11 @@
 # through the touchscreen without the need for a mouse and keyboard
 ###
 
+# # Load Media Files from USB to Pi
+# cd 
+# cd demo-test
+# python Load_from_USB.py
+
 #Go to Audio Scripts directory and run mainAudioControl for physical buttons 
 cd 
 cd demo-test/Audio_Scripts
