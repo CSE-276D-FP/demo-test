@@ -1,9 +1,3 @@
-#!/usr/bin/env python
-# coding: utf-8
-
-# ## new design
-
-# In[1]:
 
 
 from tkinter import Tk, Label, Button, OptionMenu, StringVar, Text
@@ -171,10 +165,5 @@ Button(root, text="Edit Alarms", font=("Helvetica 20"), command=edit_alarms3).pa
 
 
 root.mainloop()
-
-
-# In[ ]:
-
-
 
 

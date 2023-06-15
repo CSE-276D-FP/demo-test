@@ -4,13 +4,6 @@ from tkinter import messagebox
 from tkinter import font
 import pygame
 
-def play_sound():
-    pygame.mixer.init()
-    # sound_file = "alram.wav"  
-    sound_file = "Alarm/alram.wav"
-    pygame.mixer.music.load(sound_file)
-    pygame.mixer.music.play()
-
     
 def exit_program():
     timer_root.destroy()
@@ -52,24 +45,17 @@ secondEntry.place(x=500, y=100)
 
 def submit():
     try:
-        # the input provided by the user is
-        # stored in here :temp
+        # the input provided by the user is stored in here :temp
         temp = int(hour.get())*3600 + int(minute.get())*60 + int(second.get())
     except:
         print("Please input the right value")
     while temp >-1:
-
-        # divmod(firstvalue = temp//60, secondvalue = temp%60)
         mins,secs = divmod(temp,60)
 
         # Converting the input entered in mins or secs to hours,
-        # mins ,secs(input = 110 min --> 120*60 = 6600 => 1hr :
-        # 50min: 0sec)
+        
         hours=0
         if mins >60:
-
-            # divmod(firstvalue = temp//60, secondvalue
-            # = temp%60)
             hours, mins = divmod(mins, 60)
 
         
@@ -85,7 +71,7 @@ def submit():
         # when temp value = 0; then a messagebox pop's up
         if (temp == 0):
             messagebox.showinfo("Time Countdown", "Time's up ")
-            play_sound()
+          
 
         # after every one sec the value of temp will be decremented
         # by one
