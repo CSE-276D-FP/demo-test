@@ -1,6 +1,10 @@
 import os
 import cv2
 
+'''
+Reference for capture with buttons script. Use to implement inital timelapse feature
+'''
+
 class CameraCapture:
     captureCheck = False
     def find(self):

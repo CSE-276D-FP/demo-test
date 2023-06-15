@@ -3,6 +3,11 @@ import sys
 import pygame
 import time
 
+'''
+This script will display images in a slideshow loop. It uses pygame to generate GUI buttons for user interaction
+'''
+
+# Scales and formats images then displays it
 def display_image(image_path):
     image = pygame.image.load(image_path)
     image_width, image_height = image.get_size()
@@ -106,12 +111,6 @@ while running:
     # Display the image
     image_path = os.path.join(folder_path, image_files[current_index])
     display_image(image_path)
-    
-    # Display the title
-    # title_text = ""
-    # title_render = font.render(title_text, True, (255, 255, 255))
-    # title_rect = title_render.get_rect(center=(screen_width // 2, 20))
-    # screen.blit(title_render, title_rect)
 
     # Draw the button
     pygame.draw.rect(screen, button_color, play_pause_button_rect)

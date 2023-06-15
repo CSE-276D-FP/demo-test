@@ -4,6 +4,11 @@ from moviepy.editor import *
 import os
 import sys
 
+'''
+This script will playback the timelapse videos
+'''
+
+
 # Initialize Pygame
 pygame.init()
 

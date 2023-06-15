@@ -1,10 +1,12 @@
 from tkinter import *
 from tkinter import font
 import os
-# import sys
-# sys.path.append("../camera")
-# from capture import CameraCapture
-# from contAudioButton import cont_Audio_Button
+
+'''
+NOTE: This is the Main GUI file. Uses tkinter to create the GUI
+Will use os command to execute outside scripts for audio or visual functionality.
+In the class StartScreen, it is preparing the functionality for audio, video, image, recording, and clock
+'''
 
 class StartScreen:
     def __init__(self, master):
