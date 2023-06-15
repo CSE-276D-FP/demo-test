@@ -22,29 +22,6 @@ class StartScreen:
         self.videoButton = Button(self.master, text="Video", command=self.load_video, height=2, width=5, font=custom_font)
         self.videoButton.place(x=390, y=100)
         
-        # photo = PhotoImage(file="icons/photo.png")
-        
-        # # Get the dimensions of the text
-        # text_width = len("Photo") * 4  # Adjust the factor as needed
-        # text_height = 10  # Adjust the height as needed
-
-        # # Get the dimensions of the image
-        # image_width = photo.width()
-        # image_height = photo.height()
-
-        # # Calculate the button width and height
-        # button_width = max(text_width, image_width) + 6  # Add padding
-        # button_height = text_height + image_height + 6 # Add padding
-
-        # # Resize the image to fit the button
-        # resized_image = photo.subsample(max(image_width // button_width, 1),
-        #                                 max(image_height // button_height, 1))
-        
-        # self.button_icon = resized_image
-    
-        # self.photoButton = Button(self.master, text="Photo", image=self.button_icon, compound="left", command=self.load_photo, height=button_height, width=button_width, font=custom_font)
-        # self.photoButton.place(x=710, y=100)
-        
         self.photoButton = Button(self.master, text="Photo", command=self.load_photo, height=2, width=5, font=custom_font)
         self.photoButton.place(x=710, y=100)
         
@@ -71,12 +48,6 @@ class StartScreen:
         self.another = Audio(self.master)
         
     def load_video(self):
-        # self.audioButton.destroy()
-        # self.videoButton.destroy()
-        # self.photoButton.destroy()
-        # self.recButton.destroy()
-        # self.clockButton.destroy()
-        # self.instButton.destroy()
         os.system('python ../Video_Scripts/play_video.py')
         
     def load_photo(self):
@@ -148,17 +119,6 @@ class Audio:
         self.label = Label(self.master, text="Use Paws on Bear to Play/Pause/Skip Audio", font=custom_font)
         self.label.place(x=170, y=20)
         
-        # self.playButton = Button(self.master, text="Play", command=pygame.mixer.music.play(), height=7, width=15)
-        # self.playButton.grid(row=3, column=40)
-        
-        # self.pauseButton = Button(self.master, text="Pause", command=pygame.mixer.music.pause(), height=7, width=15)
-        # self.pauseButton.grid(row=3, column=40)
-        
-        # self.skipButton = Button(self.master, text="Skip", command=play_next_audio(current_audio_index), height=7, width=15)
-        # self.skipButton.grid(row=3, column=40)
-        
-        # os.system('python ../Audio_Scripts/contAudioButton2.py')
-        
         self.menuButton = Button(self.master, text="Menu", command=self.load_menu, height=2, width=9, font=custom_font)
         self.menuButton.place(x=330, y=150)
         
@@ -169,26 +129,6 @@ class Audio:
         # use `root` with another class
         self.another = StartScreen(self.master)
         
-# class Photo:
-#     def __init__(self, master):
-
-#         # keep `root` in `self.master`
-#         self.master = master
-
-#         self.label = Label(self.master, text="")
-#         self.label.grid(row=1, column=1)
-        
-#         os.system('python ../Image_Scripts/display_image.py')
-
-#         self.menuButton = Button(self.master, text="Back", command=self.load_menu, height=2, width=8)
-#         self.menuButton.grid(row=4, column=4)
-        
-#     def load_menu(self):
-#         self.label.destroy()
-#         self.menuButton.destroy()
-        
-#         # use `root` with another class
-#         self.another = StartScreen(self.master)
 
 class Rec:
     def __init__(self, master):
@@ -364,10 +304,6 @@ class Instruction:
         self.canvas.create_window((0, 0), window=self.scrollable_frame, anchor="nw")
         self.canvas.configure(yscrollcommand=self.scrollbar.set)
         
-        # Add some content to the scrollable frame
-        # for i in range(50):
-        #     label = Label(self.scrollable_frame, text="Label {}".format(i))
-        #     label.grid(row=i, column=0, sticky="w")
         
         custom_font = font.Font(size=30)
         label = Label(self.scrollable_frame, text="Welcome to the Instructions Page!\n", font = custom_font)
