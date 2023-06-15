@@ -6,7 +6,8 @@ import pygame
 
 def play_sound():
     pygame.mixer.init()
-    sound_file = "Alarm/alarm.wav"  
+    # sound_file = "alram.wav"  
+    sound_file = "Alarm/alram.wav"
     pygame.mixer.music.load(sound_file)
     pygame.mixer.music.play()
 

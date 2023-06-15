@@ -73,7 +73,7 @@ def exit_program():
 
 # Create a Tkinter window
 window = tk.Tk()
-window.title("Time-Lapse Capture")
+window.title("Photo Capture")
 
 # Create a camera instance
 camera = cv2.VideoCapture(0)  # Use index 0 for the first USB camera

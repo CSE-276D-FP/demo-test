@@ -1,5 +1,5 @@
 StartScreen
--displys the different mode buttons (Audio, Video)
+-displys the different mode buttons (Audio, Video, Photo, Recording, Clock)
 
 Audio
 -load audio background

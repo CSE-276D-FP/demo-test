@@ -173,7 +173,7 @@ def capture_photo(camera):
     camera.set(cv2.CAP_PROP_FRAME_HEIGHT, 720)
 
     # Define the time-lapse duration and interval between photos
-    duration = 5  # Time-lapse duration in seconds
+    duration = 10  # Time-lapse duration in seconds
     interval = 0.2   # Interval between photos in seconds
 
     # Calculate the number of photos to capture
